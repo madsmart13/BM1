@@ -1,3 +1,283 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BM_cs-c - Steam Profile Viewer</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
+
+  body {
+    background: linear-gradient(135deg, #1a1a1a 0%, #300700 100%);
+    color: #ff5722;
+    font-family: 'Vazirmatn', Arial, sans-serif;
+    direction: rtl;
+    margin: 0; padding: 0;
+    overflow-x: hidden;
+  }
+
+  header {
+    background: linear-gradient(90deg, #b71c1c, #f4511e);
+    padding: 25px 15px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 900;
+    color: white;
+    text-shadow: 0 0 5px #ff7043;
+    letter-spacing: 2px;
+    user-select: none;
+  }
+
+  #cheater-banner {
+    position: fixed;
+    top: -60px;
+    left: 0;
+    width: 100%;
+    background: #d32f2f;
+    color: white;
+    padding: 12px 0;
+    text-align: center;
+    font-weight: 700;
+    font-size: 18px;
+    box-shadow: 0 4px 8px rgba(211, 47, 47, 0.6);
+    z-index: 999;
+    transition: top 0.5s ease-in-out;
+    user-select: none;
+  }
+
+  #cheater-banner.show {
+    top: 0;
+  }
+
+  #container {
+    max-width: 600px;
+    padding: 20px 25px 30px;
+    margin: 80px auto 40px;
+    background: #2b1300;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #ff5722cc;
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  #container:hover {
+    box-shadow: 0 0 30px #ff7043ee;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #ff5722;
+    border-radius: 12px;
+    font-size: 16px;
+    color: #000;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+  }
+  input[type="text"]:focus {
+    outline: none;
+    border-color: #f57c00;
+    box-shadow: 0 0 8px #ffab40;
+  }
+
+  button {
+    background: #ff5722;
+    border: none;
+    padding: 14px 25px;
+    margin-top: 15px;
+    border-radius: 12px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    letter-spacing: 1.2px;
+    box-shadow: 0 4px 8px #ff5722cc;
+    transition: background 0.4s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  }
+  button:hover {
+    background: #ff7043;
+    box-shadow: 0 6px 14px #ff704366;
+    transform: scale(1.07);
+  }
+  button:active {
+    transform: scale(0.97);
+    box-shadow: 0 3px 7px #ff572299;
+  }
+
+  .profile-info {
+    background: #3d1f00;
+    padding: 20px;
+    margin-top: 25px;
+    border-radius: 15px;
+    color: #ffc107;
+    box-shadow: 0 0 15px #ff9800bb;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    user-select: none;
+    animation: fadeIn 0.6s ease forwards;
+  }
+  .profile-info img {
+    max-width: 110px;
+    border-radius: 50%;
+    border: 3px solid #f57c00;
+    box-shadow: 0 0 20px #ff9800aa;
+    flex-shrink: 0;
+  }
+  .profile-details {
+    flex: 1;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #ffc107;
+  }
+  .profile-field {
+    margin: 8px 0;
+    text-shadow: 0 0 5px #ff9800;
+  }
+  a.profile-link {
+    color: #ffb74d;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s ease;
+  }
+  a.profile-link:hover {
+    color: #ffe082;
+  }
+
+  .report-count {
+    font-size: 14px;
+    color: #ffb300;
+    font-weight: 700;
+    margin-top: 10px;
+    user-select: text;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(15px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
+</style>
+</head>
 <body>
-  dd
+
+<header>BM_cs-c</header>
+<div id="cheater-banner">این بازیکن چند بار ریپورت شده: <span id="cheatCount">0</span> - CHEATER</div>
+
+<div id="container">
+  <input type="text" id="steamProfileUrl" placeholder="لینک پروفایل استیم (مثلاً https://steamcommunity.com/id/username)" />
+  <button id="fetchBtn">دریافت اطلاعات پروفایل</button>
+  <div id="profileData"></div>
+  <button id="reportBtn" style="display:none;">ریپورت این بازیکن</button>
+</div>
+
+<script>
+  const API_KEY = 'DCC2C2C5C66A1BFD9F141D31663AD1D1';
+
+  const cheaterBanner = document.getElementById('cheater-banner');
+  const cheatCountSpan = document.getElementById('cheatCount');
+  const profileDiv = document.getElementById('profileData');
+  const reportBtn = document.getElementById('reportBtn');
+
+  // گزارش‌ها را از localStorage می‌خوانیم
+  function getReportCount(steamId) {
+    const reports = JSON.parse(localStorage.getItem('reportedPlayers') || '{}');
+    return reports[steamId] || 0;
+  }
+  // گزارش‌ها را ذخیره می‌کنیم
+  function setReportCount(steamId, count) {
+    const reports = JSON.parse(localStorage.getItem('reportedPlayers') || '{}');
+    reports[steamId] = count;
+    localStorage.setItem('reportedPlayers', JSON.stringify(reports));
+  }
+  // نمایش نوار ریسک
+  function showCheaterBannerIfNeeded(steamId) {
+    const count = getReportCount(steamId);
+    cheatCountSpan.textContent = count;
+    if (count >= 5) {
+      cheaterBanner.classList.add('show');
+    } else {
+      cheaterBanner.classList.remove('show');
+    }
+  }
+
+  async function resolveVanityUrl(vanityUrl) {
+    const urlParts = vanityUrl.split('/');
+    const lastPart = urlParts.filter(p => p.trim() !== '').pop();
+    if (/^\d{17}$/.test(lastPart)) {
+      return lastPart;
+    }
+    const response = await fetch(`https://api.steampowered.com/ISteamUser/ResolveVanityURL/v1/?key=${API_KEY}&vanityurl=${lastPart}`);
+    const data = await response.json();
+    if (data.response.success === 1) {
+      return data.response.steamid;
+    } else {
+      throw new Error('نام کاربری یافت نشد.');
+    }
+  }
+
+  async function getSteamProfile(steamId) {
+    const response = await fetch(`https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=${API_KEY}&steamids=${steamId}`);
+    const data = await response.json();
+    return data.response.players[0];
+  }
+
+  async function getSteamLevel(steamId) {
+    const response = await fetch(`https://api.steampowered.com/IPlayerService/GetSteamLevel/v1/?key=${API_KEY}&steamid=${steamId}`);
+    const data = await response.json();
+    return data.response.player_level;
+  }
+
+  async function fetchProfile() {
+    const url = document.getElementById('steamProfileUrl').value.trim();
+    profileDiv.innerHTML = '';
+    reportBtn.style.display = 'none';
+    cheaterBanner.classList.remove('show');
+
+    if (!url) {
+      alert('لطفاً لینک پروفایل استیم را وارد کنید.');
+      return;
+    }
+    try {
+      const steamId = await resolveVanityUrl(url);
+      showCheaterBannerIfNeeded(steamId);
+
+      const profile = await getSteamProfile(steamId);
+      const level = await getSteamLevel(steamId);
+
+      if (!profile) throw new Error('پروفایل یافت نشد.');
+
+      profileDiv.innerHTML = `
+        <div class="profile-info">
+          <img src="${profile.avatarfull}" alt="آواتار پروفایل" />
+          <div class="profile-details">
+            <div class="profile-field"><strong>نام کاربری:</strong> ${profile.personaname}</div>
+            <div class="profile-field"><strong>سطح استیم:</strong> ${level}</div>
+            <div class="profile-field"><strong>وضعیت آنلاین:</strong> ${profile.personastate === 1 ? 'آنلاین' : 'آفلاین'}</div>
+            <div class="profile-field"><strong>لینک پروفایل:</strong> <a class="profile-link" href="${profile.profileurl}" target="_blank">نمایش در استیم</a></div>
+            <div class="report-count">تعداد ریپورت‌ها: ${getReportCount(steamId)}</div>
+          </div>
+        </div>
+      `;
+
+      reportBtn.style.display = 'inline-block';
+      reportBtn.onclick = () => {
+        let count = getReportCount(steamId);
+        count++;
+        setReportCount(steamId, count);
+        alert(`این بازیکن اکنون ${count} بار ریپورت شده است.`);
+        showCheaterBannerIfNeeded(steamId);
+        // بروزرسانی تعداد ریپورت‌ها در نمایش
+        document.querySelector('.report-count').textContent = 'تعداد ریپورت‌ها: ' + count;
+      };
+    } catch (err) {
+      alert('خطا: ' + err.message);
+    }
+  }
+
+  document.getElementById('fetchBtn').addEventListener('click', fetchProfile);
+</script>
+
 </body>
+</html>
