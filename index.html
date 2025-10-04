@@ -15,197 +15,169 @@
     background: #0a0a0a;
     color: #eee;
     overflow-x: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  .container {
-    max-width: 900px;
-    margin: 40px auto;
-    backdrop-filter: blur(12px);
-    background: rgba(15,15,15,0.7);
-    border-radius: 14px;
-    padding: 40px 30px 50px;
+  .regal-container {
+    width: 700px;
+    height: 270px;
+    background: rgba(15,15,15,0.9);
+    border-radius: 18px;
     border: 2px solid #e63946;
-    box-shadow: 0 0 15px #e63946aa;
+    box-shadow: 0 0 25px #e63946cc;
+    overflow: hidden;
     position: relative;
-  }
-  h1 {
-    color: #e63946;
-    text-align: center;
-    margin-bottom: 30px;
-    font-weight: 900;
-    letter-spacing: 4px;
-  }
-  /* شناور اطلاعات پلیر */
-  .player-info {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(25, 0, 0, 0.85);
-    border-radius: 20px;
-    box-shadow: 0 0 20px #e63946cc;
-    border: 2px solid #ff3737;
-    padding: 20px 30px;
     display: flex;
     align-items: center;
-    gap: 25px;
-    animation: floaty 6s ease-in-out infinite;
-    width: 550px;
-    z-index: 1000;
+    padding: 20px;
+    gap: 30px;
   }
-  @keyframes floaty {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(-12px); }
+  .regal-wrapper {
+    display: flex;
+    width: 1400px; /* 2 * regal width */
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
+  .regal-card {
+    width: 700px;
+    flex-shrink: 0;
+    background: #1a0a0a;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 0 20px #ff3a3aaa;
+    color: #fff;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  /* اطلاعات شما */
   .player-img {
-    width: 110px;
-    height: 110px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
-    border: 3px solid #ff4747;
-    box-shadow: 0 0 15px #ff4747aa;
+    border: 3px solid #ff3a3a;
+    box-shadow: 0 0 18px #ff3a3aaa;
+    margin-bottom: 15px;
     object-fit: cover;
   }
-  .player-details {
-    flex-grow: 1;
-    color: #fff;
-  }
   .player-name {
-    font-size: 28px;
+    font-size: 34px;
     font-weight: 900;
-    margin-bottom: 10px;
-    color: #ff5b5b;
+    color: #ff5555;
+    margin-bottom: 12px;
   }
-  .add-friend-btn {
-    display: inline-block;
+  .btn-add-friend {
     background: linear-gradient(90deg, #ff3a3a, #e63946);
-    padding: 8px 20px;
-    border-radius: 25px;
-    color: #fff;
-    font-weight: 700;
+    padding: 10px 28px;
+    border-radius: 30px;
+    color: white;
+    font-weight: 900;
     text-decoration: none;
-    box-shadow: 0 0 12px #ff3a3aaa;
+    box-shadow: 0 0 20px #ff3a3aaa;
+    margin-bottom: 18px;
     transition: background 0.3s ease;
-    margin-bottom: 15px;
   }
-  .add-friend-btn:hover {
+  .btn-add-friend:hover {
     background: linear-gradient(90deg, #e63946, #ff3a3a);
   }
   .info-row {
     display: flex;
-    gap: 15px;
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
   }
   .info-item {
-    flex: 1 1 110px;
-    background: rgba(255, 69, 69, 0.15);
-    border-radius: 12px;
-    padding: 10px;
+    background: rgba(255,69,69,0.18);
+    border-radius: 14px;
+    box-shadow: 0 0 14px #ff3a3a99;
+    padding: 14px 22px;
+    min-width: 110px;
     text-align: center;
-    box-shadow: 0 0 8px #ff4747bb;
-    transition: background 0.3s ease;
     cursor: default;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    transition: background 0.3s ease;
   }
   .info-item:hover {
-    background: rgba(255, 69, 69, 0.4);
+    background: rgba(255,69,69,0.45);
   }
   .info-icon {
-    font-size: 24px;
-    color: #ff6f6f;
-    margin-bottom: 6px;
+    color: #ff7a7a;
+    font-size: 26px;
+    margin-bottom: 8px;
   }
   .info-label {
-    font-weight: 600;
-    font-size: 14px;
-    color: #ff8a8a;
+    font-weight: 700;
+    font-size: 16px;
+    color: #ffa0a0;
   }
   .info-value {
-    margin-top: 4px;
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff;
-  }
-  
-  /* فرم ورود اطلاعات */
-  .input-section {
-    margin-top: 120px;
-    background: rgba(230, 57, 70, 0.15);
-    border-radius: 20px;
-    padding: 25px 30px;
-    box-shadow: 0 0 15px #ff4a4aaa;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .input-section h2 {
-    text-align: center;
-    color: #ff5c5c;
-    margin-bottom: 20px;
     font-weight: 900;
-  }
-  .form-group {
-    margin-bottom: 15px;
-    display: flex;
-    flex-direction: column;
-  }
-  label {
-    font-weight: 700;
-    color: #ff7b7b;
-    margin-bottom: 6px;
-  }
-  input, select {
-    padding: 10px 14px;
-    border-radius: 12px;
-    border: none;
-    background: #222;
-    color: #eee;
-    font-size: 16px;
-  }
-  textarea {
-    padding: 10px 14px;
-    border-radius: 12px;
-    border: none;
-    background: #222;
-    color: #eee;
-    font-size: 16px;
-    resize: vertical;
-  }
-  .btn-send {
-    margin-top: 20px;
-    width: 100%;
-    padding: 12px 0;
-    background: #e63946;
-    border: none;
-    border-radius: 30px;
-    font-weight: 900;
+    font-size: 20px;
     color: white;
-    font-size: 18px;
+  }
+  /* کارت + */
+  .plus-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .btn-plus {
+    font-size: 90px;
+    color: #ff4444cc;
     cursor: pointer;
-    transition: background 0.3s ease;
+    user-select: none;
+    transition: color 0.3s ease;
+    border: 3px solid #ff5555;
+    border-radius: 50%;
+    width: 140px;
+    height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 30px #ff5555aa;
   }
-  .btn-send:hover {
-    background: #ff2a2a;
+  .btn-plus:hover {
+    color: #ff1f1f;
+    box-shadow: 0 0 40px #ff1f1fcc;
+    border-color: #ff1f1f;
   }
-  .note {
-    font-size: 12px;
-    color: #ff6a6a;
-    margin-top: 10px;
-    text-align: center;
+  /* دکمه ورق زدن */
+  .nav-buttons {
+    position: absolute;
+    bottom: 18px;
+    right: 24px;
+    display: flex;
+    gap: 18px;
+  }
+  .btn-nav {
+    background: transparent;
+    color: #e63946;
+    padding: 10px 18px;
+    font-weight: 900;
+    font-size: 18px;
+    border: 2px solid #e63946;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+  }
+  .btn-nav:hover {
+    background: #e63946;
+    color: #0a0a0a;
+    box-shadow: 0 0 16px #e63946aa;
   }
 </style>
 </head>
 <body>
 
-<div class="container">
-  <h1>ir gamers</h1>
-
-  <!-- اطلاعات پلیر شناور -->
-  <section class="player-info" aria-label="اطلاعات پلیر">
-    <img src="https://avatars.steamstatic.com/cee5c68f707919e52554f27e6931e26e2df244d3_full.jpg" alt="تصویر پروفایل استیم" class="player-img" />
-    <div class="player-details">
+<div class="regal-container" role="region" aria-label="رگال اطلاعات و پیام">
+  <div class="regal-wrapper" id="regalWrapper" style="transform: translateX(0);">
+    <!-- کارت اطلاعات پلیر -->
+    <div class="regal-card" aria-label="اطلاعات پلیر M_LMC">
+      <img src="https://avatars.steamstatic.com/cee5c68f707919e52554f27e6931e26e2df244d3_full.jpg" alt="تصویر پروفایل استیم M_LMC" class="player-img" />
       <div class="player-name">M_LMC</div>
-      <a href="https://steamcommunity.com/id/M_LMC/" target="_blank" class="add-friend-btn" rel="noopener">اد فرند</a>
+      <a href="https://steamcommunity.com/id/M_LMC/" target="_blank" class="btn-add-friend" rel="noopener">اد فرند</a>
       <div class="info-row">
         <div class="info-item" title="سن">
           <i class="fa-solid fa-user info-icon"></i>
@@ -244,71 +216,52 @@
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- فرم اطلاعات کاربر -->
-  <section class="input-section" aria-label="ورود اطلاعات کاربر">
-    <h2>وارد کردن اطلاعات و ارسال پیام</h2>
-    <form id="playerForm" action="mailto:bm.pro.ir@gmail.com" method="POST" enctype="text/plain" style="display:flex; flex-direction: column;" onsubmit="return prepareMail()">
-      <div class="form-group">
-        <label for="username">نام استیم</label>
-        <input type="text" id="username" name="نام استیم" required placeholder="اسم استیم شما" />
-      </div>
-      <div class="form-group">
-        <label for="age">سن</label>
-        <input type="number" id="age" name="سن" required min="10" max="120" placeholder="سن شما" />
-      </div>
-      <div class="form-group">
-        <label for="playtime">تایم پلی (ساعت)</label>
-        <input type="number" id="playtime" name="تایم پلی" required min="0" placeholder="مدت زمان بازی" />
-      </div>
-      <div class="form-group">
-        <label for="rank">رنک</label>
-        <input type="number" id="rank" name="رنک" required min="0" placeholder="رنک شما" />
-      </div>
-      <div class="form-group">
-        <label for="gamescount">تعداد بازی</label>
-        <input type="number" id="gamescount" name="تعداد بازی" required min="0" placeholder="چند بازی دارید؟" />
-      </div>
-      <div class="form-group">
-        <label for="steamlevel">لول استیم</label>
-        <input type="number" id="steamlevel" name="لول استیم" required min="0" max="1000" placeholder="سطح استیم شما" />
-      </div>
-      <div class="form-group">
-        <label for="city">شهر</label>
-        <input type="text" id="city" name="شهر" required placeholder="شهر محل سکونت" />
-      </div>
-      <div class="form-group">
-        <label for="discordid">آیدی دیسکورد</label>
-        <input type="text" id="discordid" name="آیدی دیسکورد" required placeholder="@discordid" />
-      </div>
-      <div class="form-group">
-        <label for="message">متن پیام</label>
-        <textarea id="message" name="پیام" rows="4" required placeholder="متن پیام خود را اینجا بنویسید..."></textarea>
-      </div>
-      <button type="submit" class="btn-send">ارسال پیام</button>
-    </form>
-    <p class="note">پیام شما بعد از ارسال به ایمیل bm.pro.ir@gmail.com می‌رود.</p>
-  </section>
-
+    <!-- کارت + -->
+    <div class="regal-card plus-card" aria-label="ارسال پیام">
+      <div class="btn-plus" id="btnPlus" tabindex="0" role="button" aria-pressed="false" aria-label="ارسال پیام به ایمیل">+</div>
+    </div>
+  </div>
+  <!-- دکمه های ورق زدن -->
+  <div class="nav-buttons">
+    <button class="btn-nav" id="prevBtn" aria-label="رگال قبلی">&lt;</button>
+    <button class="btn-nav" id="nextBtn" aria-label="رگال بعدی">&gt;</button>
+  </div>
 </div>
 
 <script>
-  // این کد آماده سازی متن ایمیل برای mailto است که در فرم استفاده شده
-  function prepareMail() {
-    const form = document.getElementById('playerForm');
-    const data = new FormData(form);
+  const regalWrapper = document.getElementById('regalWrapper');
+  let currentIndex = 0;
+  const totalCards = 2; // 2 کارت: اطلاعات و +
 
-    let body = '';
-    for (let [key, value] of data.entries()) {
-      body += `${key}: ${value}%0D%0A`;
-    }
-
-    const mailtoLink = `mailto:bm.pro.ir@gmail.com?subject=پیام از سایت ir gamers&body=${body}`;
-    window.location.href = mailtoLink;
-    return false; // جلوگیری از ارسال فرم به صورت عادی
+  function updateRegal() {
+    regalWrapper.style.transform = `translateX(-${currentIndex * 700}px)`;
   }
-</script>
 
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % totalCards;
+    updateRegal();
+  });
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+    updateRegal();
+  });
+
+  // دکمه + با باز کردن ایمیل در mailto واقعی
+  const btnPlus = document.getElementById('btnPlus');
+  btnPlus.addEventListener('click', () => {
+    const subject = encodeURIComponent('پیام از سایت ir gamers');
+    const body = encodeURIComponent('لطفا پیام خود را اینجا بنویسید...');
+    const mailtoLink = `mailto:bm.pro.ir@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = mailtoLink;
+  });
+  btnPlus.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      btnPlus.click();
+    }
+  });
+
+  updateRegal();
+</script>
 </body>
 </html>
