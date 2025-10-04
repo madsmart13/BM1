@@ -1,352 +1,353 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title> IR gamers</title>
+<title>ir gamers - پلیر استیم</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
-
+  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+  * {
+    box-sizing: border-box;
+  }
   body {
-    margin: 0; padding: 0;
-    font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
-    background: #100c0a;
-    color: #ff6700;
-    direction: rtl;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0a0a0a;
+    color: #eee;
     overflow-x: hidden;
   }
-  header {
-    background: linear-gradient(90deg, #b71c1c, #ff5722);
-    padding: 25px 0;
-    text-align: center;
-    font-weight: 900;
-    font-size: 34px;
-    color: #fff;
-    letter-spacing: 4px;
-    text-shadow: 0 0 12px #ff4500;
-    user-select: none;
-  }
-  main {
+  .container {
     max-width: 900px;
     margin: 40px auto;
-    padding: 0 20px;
-    display: flex;
-    gap: 35px;
+    backdrop-filter: blur(12px);
+    background: rgba(15,15,15,0.7);
+    border-radius: 14px;
+    padding: 20px 30px 50px;
+    border: 2px solid #e63946;
+    box-shadow: 0 0 15px #e63946aa;
   }
-
-  /* Player Card */
-  .player-card {
-    background: linear-gradient(135deg, #1f0a00, #400d00);
-    border-radius: 25px;
-    box-shadow: 0 0 25px #ff5722cc;
-    width: 380px;
-    padding: 30px 25px;
-    position: sticky;
-    top: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: box-shadow 0.4s ease;
-  }
-  .player-card:hover {
-    box-shadow: 0 0 45px #ff6f32ff;
-  }
-  .avatar {
-    border-radius: 50%;
-    border: 5px solid #ff7700cc;
-    width: 130px;
-    height: 130px;
-    overflow: hidden;
-    box-shadow: 0 0 18px #ffa040aa;
-    margin-bottom: 18px;
-    transition: transform 0.3s ease;
-  }
-  .avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .avatar:hover {
-    transform: scale(1.08);
-  }
-  .player-name {
-    font-size: 26px;
-    font-weight: 900;
-    color: #ffcc80;
-    text-shadow: 0 0 10px #ff6f32;
+  h1 {
+    color: #e63946;
+    text-align: center;
     margin-bottom: 20px;
+    font-weight: 900;
+    letter-spacing: 4px;
   }
-  .btns {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 25px;
+  .profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #e63946;
+    margin: 0 auto 10px;
+    display: block;
+    object-fit: cover;
+    box-shadow: 0 0 12px #e63946dd;
   }
-  .btn {
-    padding: 13px 26px;
-    background: #d84315;
+  .steam-name {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #ff4f56;
+    letter-spacing: 1.5px;
+  }
+  .btn-add-friend {
+    display: block;
+    text-align: center;
+    margin: 8px auto 25px;
+    padding: 10px 25px;
+    background: linear-gradient(90deg, #ff3a3a, #e63946);
     border: none;
-    border-radius: 18px;
-    color: #fff;
+    border-radius: 25px;
+    color: white;
+    text-decoration: none;
     font-weight: 700;
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 0 0 15px #ff6f32ee;
-    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-    user-select: none;
+    box-shadow: 0 0 15px #ff3a3aaa;
+    transition: background 0.3s ease;
   }
-  .btn:hover {
-    background: #ff7043;
-    box-shadow: 0 0 28px #ff954c;
-    transform: scale(1.1);
+  .btn-add-friend:hover {
+    background: linear-gradient(90deg, #e63946, #ff3a3a);
   }
-  .btn:active {
-    transform: scale(0.95);
-    box-shadow: 0 0 15px #ff6f3277;
-  }
-
   .info-list {
-    width: 100%;
-    color: #ffb34d;
-    font-weight: 700;
-    font-size: 18px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    user-select: text;
-  }
-  .info-list li {
-    padding: 10px 0;
-    border-bottom: 1px solid #ff6722cc;
-    letter-spacing: 0.9px;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
   }
-  .info-list li:last-child {
-    border-bottom: none;
+  .info-item {
+    background: rgba(230, 57, 70, 0.15);
+    border-radius: 12px;
+    padding: 15px 20px;
+    width: 140px;
+    text-align: center;
+    box-shadow: 0 0 8px #e63946bb;
+    transition: background 0.3s ease;
+    cursor: default;
+  }
+  .info-item:hover {
+    background: rgba(230, 57, 70, 0.4);
+  }
+  .info-icon {
+    font-size: 26px;
+    color: #ff5252;
+    margin-bottom: 6px;
+    display: block;
   }
   .info-label {
-    color: #ff8f3e;
+    font-weight: 600;
+    font-size: 14px;
+    color: #ff7b7b;
   }
   .info-value {
-    color: #ffcc80;
-    font-weight: 900;
-    font-size: 19px;
+    margin-top: 4px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
   }
-
-  /* Circular Steam Level Progress */
-  .progress-ring {
+  /* Regal slider */
+  .regal-slider {
+    margin-top: 40px;
     position: relative;
-    width: 90px;
-    height: 90px;
-    margin: 0 auto 20px;
+    overflow: visible;
+    user-select: none;
   }
-  svg {
-    transform: rotate(-90deg);
-    width: 90px;
-    height: 90px;
+  .regal-wrapper {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  circle {
-    fill: transparent;
-    stroke-width: 8;
-    stroke-linecap: round;
+  .regal-card {
+    min-width: 280px;
+    margin: 0 12px;
+    background: #151515;
+    border-radius: 16px;
+    box-shadow: 0 0 15px #e63946cc;
+    padding: 20px;
+    color: #ededed;
+    cursor: grab;
+    transform-origin: center center;
+    transition: transform 0.5s ease;
   }
-  .progress-ring__circle-bg {
-    stroke: #441a00;
+  .regal-card.active {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 0 25px #ff3a3a;
   }
-  .progress-ring__circle {
-    stroke: #ff5722;
-    transition: stroke-dashoffset 0.35s;
-    transform-origin: center;
+  .regal-buttons {
+    text-align: center;
+    margin-top: 20px;
   }
-  .level-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: 900;
-    color: #ffbb55;
-    font-size: 22px;
-    text-shadow: 0 0 6px #ff7f32;
+  .btn-regal {
+    background: transparent;
+    border: 2px solid #e63946;
+    color: #e63946;
+    padding: 10px 16px;
+    margin: 0 8px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
   }
-
-  /* Info Section for next profiles or input */
-  .next-section {
-    flex: 1;
-    background: #291004cc;
-    border-radius: 22px;
-    box-shadow: 0 0 24px #ff6f3222;
-    padding: 30px 25px;
+  .btn-regal:hover {
+    background: #e63946;
+    color: #1a1a1a;
+    box-shadow: 0 0 15px #ff3a3a;
+  }
+  /* Message form */
+  .msg-form-wrapper {
+    max-width: 350px;
+    margin: 25px auto 0;
+    background: rgba(230, 57, 70, 0.2);
+    border-radius: 15px;
+    padding: 18px 22px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 10px #e63946dd;
+    display: none;
+  }
+  .msg-form-wrapper.active {
+    display: block;
+  }
+  .msg-form-wrapper h3 {
+    color: #ff4444;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .msg-form {
     display: flex;
     flex-direction: column;
   }
-  .next-section h2 {
-    font-weight: 900;
-    font-size: 28px;
-    color: #ff9b3e;
-    margin-bottom: 18px;
-    text-shadow: 0 0 8px #ff6f32;
-    user-select: none;
+  .msg-form label {
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #ff6f6f;
   }
-  .next-section label {
-    font-weight: 700;
-    font-size: 16px;
-    color: #ff8c00;
-    margin-bottom: 9px;
-  }
-  .next-section input[type="text"] {
-    padding: 12px 14px;
-    border-radius: 12px;
-    border: 2px solid #ff6f32;
-    font-size: 17px;
-    color: #000;
-    font-weight: 700;
-    letter-spacing: 1.2px;
-    transition: border-color 0.3s ease;
-    box-sizing: border-box;
-    margin-bottom: 15px;
-  }
-  .next-section input[type="text"]:focus {
-    outline: none;
-    border-color: #ff9b48;
-    box-shadow: 0 0 9px #ffbb56aa;
-  }
-  .next-section button {
-    background: #ff6f32;
+  .msg-form input,
+  .msg-form textarea {
+    padding: 8px 14px;
+    border-radius: 10px;
     border: none;
-    padding: 14px 26px;
-    border-radius: 16px;
-    font-size: 18px;
-    font-weight: 900;
+    background: #222;
+    color: #eee;
+    font-size: 14px;
+    margin-bottom: 15px;
+    resize: vertical;
+  }
+  .msg-form button {
+    background: #e63946;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    font-weight: 700;
     color: white;
     cursor: pointer;
-    box-shadow: 0 0 28px #ff954c;
-    transition: background 0.4s ease, transform 0.3s ease;
-    user-select: none;
+    transition: background 0.3s ease;
   }
-  .next-section button:hover {
-    background: #ffaa63;
-    transform: scale(1.05);
+  .msg-form button:hover {
+    background: #ff2a2a;
   }
-  .next-section button:active {
-    transform: scale(0.95);
+  /* Header gaming mini sections */
+  .header-gaming-minis {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 28px;
   }
-  .next-section .info-text {
-    margin-top: 12px;
+  .mini-gaming-item {
+    padding: 12px 25px;
+    border: 2px solid #ff3a3a;
+    border-radius: 30px;
+    color: #ff4c4c;
     font-weight: 700;
-    font-size: 15px;
-    color: #ffb347cc;
-    user-select: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
   }
-
-  /* Small fades for smooth UI */
-  .fadein {
-    animation: fadeInUp 0.7s ease forwards;
-    opacity: 0;
-  }
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    from {
-      opacity: 0;
-      transform: translateY(40px);
-    }
+  .mini-gaming-item:hover {
+    background: #ff3a3a;
+    color: #111;
+    box-shadow: 0 0 15px #ff3a3aaa;
   }
 </style>
 </head>
 <body>
-<header>BM_cs-c</header>
-<main>
-  <section class="player-card fadein" id="playerCard">
-    <div class="avatar" id="avatar">
-      <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/8b/8b73fb6a141a4de3b1deb85ad82ae2abe9a4ffe1_full.jpg" alt="آواتار استیم" />
+<div class="container">
+  <h1>ir gamers</h1>
+  <div class="header-gaming-minis">
+    <div class="mini-gaming-item">News</div>
+    <div class="mini-gaming-item">Tournaments</div>
+    <div class="mini-gaming-item">Shop</div>
+    <div class="mini-gaming-item">Community</div>
+  </div>
+  <img class="profile-img" src="https://avatars.steamstatic.com/cee5c68f707919e52554f27e6931e26e2df244d3_full.jpg" alt="Steam Profile Picture" />
+  <div class="steam-name">M_LMC</div>
+  <a href="https://steamcommunity.com/id/M_LMC/" target="_blank" class="btn-add-friend" rel="noopener">Add Friend</a>
+  <div class="info-list">
+    <div class="info-item" title="سن">
+      <i class="fa-solid fa-user info-icon"></i>
+      <div class="info-label">سن</div>
+      <div class="info-value">20</div>
     </div>
-    <div class="player-name" id="playerName">Mahdiyar LMC</div>
-    <div class="progress-ring" role="img" aria-label="سطح استیم">
-      <svg width="90" height="90">
-        <circle class="progress-ring__circle-bg" stroke="#441a00" stroke-width="8" r="40" cx="45" cy="45" />
-        <circle class="progress-ring__circle" stroke="#ff5722" stroke-width="8" r="40" cx="45" cy="45" stroke-dasharray="251.2" stroke-dashoffset="120" />
-      </svg>
-      <div class="level-text" id="steamLevel">22</div>
+    <div class="info-item" title="زمان بازی">
+      <i class="fa-solid fa-clock info-icon"></i>
+      <div class="info-label">تایم پلی</div>
+      <div class="info-value">800 ساعت</div>
     </div>
-    <ul class="info-list" id="playerInfo">
-      <li><span class="info-label">اد فرند:</span> <a href="https://steamcommunity.com/id/M_LMC/" target="_blank" class="info-value" style="color:#ffa726;">افزودن</a></li>
-      <li><span class="info-label">سن:</span> <span class="info-value">20 سال</span></li>
-      <li><span class="info-label">تایم پلی (ساعت):</span> <span class="info-value">800</span></li>
-      <li><span class="info-label">رنک:</span> <span class="info-value">12000</span></li>
-      <li><span class="info-label">تعداد بازی‌ها:</span> <span class="info-value">12</span></li>
-      <li><span class="info-label">شهر:</span> <span class="info-value">خمین مرکزی</span></li>
-      <li><span class="info-label">آیدی دیسکورد:</span> <span class="info-value">mahdiyar_lmc</span></li>
-    </ul>
-  </section>
-
-  <section class="next-section fadein" style="animation-delay: 0.3s;">
-    <h2>مشاهده پروفایل دیگران</h2>
-    <label for="profileUrl">لینک پروفایل استیم</label>
-    <input type="text" id="profileUrl" placeholder="https://steamcommunity.com/id/username" />
-    <button id="loadProfileBtn">نمایش اطلاعات پلیر</button>
-    <div class="info-text" id="infoText">لطفا لینک پروفایل استیم را وارد کنید.</div>
-  </section>
-</main>
+    <div class="info-item" title="رنک">
+      <i class="fa-solid fa-ranking-star info-icon"></i>
+      <div class="info-label">رنک</div>
+      <div class="info-value">12000</div>
+    </div>
+    <div class="info-item" title="تعداد بازی">
+      <i class="fa-solid fa-gamepad info-icon"></i>
+      <div class="info-label">تعداد بازی</div>
+      <div class="info-value">12</div>
+    </div>
+    <div class="info-item" title="سطح استیم">
+      <i class="fa-solid fa-level-up-alt info-icon"></i>
+      <div class="info-label">لول استیم</div>
+      <div class="info-value">22</div>
+    </div>
+    <div class="info-item" title="شهر">
+      <i class="fa-solid fa-location-dot info-icon"></i>
+      <div class="info-label">شهر</div>
+      <div class="info-value">خمین مرکزی</div>
+    </div>
+    <div class="info-item" title="آیدی دیسکورد">
+      <i class="fa-brands fa-discord info-icon"></i>
+      <div class="info-label">آیدی دیسکورد</div>
+      <div class="info-value">@mahdiyar_lmc</div>
+    </div>
+  </div>
+  <div class="regal-slider">
+    <div class="regal-wrapper" id="regalWrapper">
+      <div class="regal-card active">
+        <h3>اطلاعات پلیر</h3>
+        <p>نمایش اطلاعات شما با انیمیشن شناور و ورق زدنی.</p>
+      </div>
+      <div class="regal-card">
+        <h3>ارسال پیام</h3>
+        <button id="msgToggle" class="btn-regal">+</button>
+      </div>
+    </div>
+    <div class="regal-buttons">
+      <button id="prevBtn" class="btn-regal">&lt; قبلی</button>
+      <button id="nextBtn" class="btn-regal">بعدی &gt;</button>
+    </div>
+  </div>
+  <div class="msg-form-wrapper" id="msgFormWrapper">
+    <h3>ارسال پیام به bm.pro.ir@gmail.com</h3>
+    <form class="msg-form" onsubmit="sendMessage(event)">
+      <label for="email">ایمیل شما</label>
+      <input type="email" id="email" required placeholder="Your Email" />
+      <label for="message">متن پیام</label>
+      <textarea id="message" rows="4" required placeholder="متن پیام خود را وارد کنید..."></textarea>
+      <button type="submit">ارسال</button>
+    </form>
+  </div>
+</div>
 
 <script>
-  // نمونه نیمه استاتیک؛ اطلاعات متغیر دستی وارد شده است
-  const steamLevelCircle = document.querySelector('.progress-ring__circle');
-  const circleRadius = 40;
-  const circumference = 2 * Math.PI * circleRadius;
+  let currentIndex = 0;
+  const regalWrapper = document.getElementById('regalWrapper');
+  const cards = regalWrapper.children;
+  const totalCards = cards.length;
 
-  function setProgress(level) {
-    const maxLevel = 100;  // سطح ماکزیمم فرضی
-    const percent = Math.min(level, maxLevel) / maxLevel;
-    const offset = circumference * (1 - percent);
-    steamLevelCircle.style.strokeDasharray = circumference;
-    steamLevelCircle.style.strokeDashoffset = offset;
-  }
-  setProgress(22);
-
-  // توابع آپدیت اطلاعات در پلیر کارت
-  function updatePlayerInfo(profile) {
-    document.getElementById('avatar').querySelector('img').src = profile.avatarfull;
-    document.getElementById('playerName').textContent = profile.personaname || 'Unknown';
-    document.getElementById('steamLevel').textContent = profile.level || '0';
-
-    // اطلاعات دستی که خواستید
-    const infoList = document.getElementById('playerInfo');
-    infoList.innerHTML = `
-      <li><span class="info-label">اد فرند:</span> <a href="${profile.profileurl}" target="_blank" class="info-value" style="color:#ffa726;">افزودن</a></li>
-      <li><span class="info-label">سن:</span> <span class="info-value">20 سال</span></li>
-      <li><span class="info-label">تایم پلی (ساعت):</span> <span class="info-value">800</span></li>
-      <li><span class="info-label">رنک:</span> <span class="info-value">12000</span></li>
-      <li><span class="info-label">تعداد بازی‌ها:</span> <span class="info-value">12</span></li>
-      <li><span class="info-label">شهر:</span> <span class="info-value">خمین مرکزی</span></li>
-      <li><span class="info-label">آیدی دیسکورد:</span> <span class="info-value">mahdiyar_lmc</span></li>
-    `;
-  }
-
-  // نمونه داده اولیه (شما می توانید با API پویا جایگزین کنید)
-  const exampleProfile = {
-    avatarfull: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/8b/8b73fb6a141a4de3b1deb85ad82ae2abe9a4ffe1_full.jpg',
-    personaname: 'Mahdiyar LMC',
-    profileurl: 'https://steamcommunity.com/id/M_LMC/',
-    level: 22,
-  };
-  updatePlayerInfo(exampleProfile);
-  setProgress(exampleProfile.level);
-
-  // قابلیت بارگذاری پروفایل جدید به صورت ابتدایی
-  document.getElementById('loadProfileBtn').addEventListener('click', () => {
-    const input = document.getElementById('profileUrl').value.trim();
-    if (!input) {
-      document.getElementById('infoText').textContent = 'لطفا لینک پروفایل را وارد کنید.';
-      return;
+  function updateSlider() {
+    for (let i = 0; i < totalCards; i++) {
+      cards[i].classList.remove('active');
     }
-    // این بخش برای بارگذاری پویا باید API Steam واقعی و سمت سرور باشد
-    // اینجا فقط یه پیام نمایشی قرار داده شده
-    alert('در نسخه آزمایشی فقط پروفایل خودتان نمایش داده می‌شود.');
-  });
-</script>
+    cards[currentIndex].classList.add('active');
+    regalWrapper.style.transform = `translateX(-${currentIndex * 320}px)`;
+  }
 
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % totalCards;
+    updateSlider();
+  });
+
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+    updateSlider();
+  });
+
+  // Toggle message form
+  const msgToggle = document.getElementById('msgToggle');
+  const msgWrapper = document.getElementById('msgFormWrapper');
+  msgToggle.addEventListener('click', () => {
+    msgWrapper.classList.toggle('active');
+  });
+
+  // Fake send message function
+  function sendMessage(e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    alert(`پیام شما به ${email} ارسال شد (شبیه‌سازی).`);
+    e.target.reset();
+    msgWrapper.classList.remove('active');
+  }
+
+  // Initialize slider
+  updateSlider();
+</script>
 </body>
 </html>
