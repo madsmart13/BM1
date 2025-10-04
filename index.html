@@ -3,280 +3,349 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>BM_cs-c - Steam Profile Viewer</title>
+<title> IR gamers</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
 
   body {
-    background: linear-gradient(135deg, #1a1a1a 0%, #300700 100%);
-    color: #ff5722;
-    font-family: 'Vazirmatn', Arial, sans-serif;
-    direction: rtl;
     margin: 0; padding: 0;
+    font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
+    background: #100c0a;
+    color: #ff6700;
+    direction: rtl;
     overflow-x: hidden;
   }
-
   header {
-    background: linear-gradient(90deg, #b71c1c, #f4511e);
-    padding: 25px 15px;
+    background: linear-gradient(90deg, #b71c1c, #ff5722);
+    padding: 25px 0;
     text-align: center;
-    font-size: 30px;
     font-weight: 900;
-    color: white;
-    text-shadow: 0 0 5px #ff7043;
-    letter-spacing: 2px;
+    font-size: 34px;
+    color: #fff;
+    letter-spacing: 4px;
+    text-shadow: 0 0 12px #ff4500;
     user-select: none;
   }
-
-  #cheater-banner {
-    position: fixed;
-    top: -60px;
-    left: 0;
-    width: 100%;
-    background: #d32f2f;
-    color: white;
-    padding: 12px 0;
-    text-align: center;
-    font-weight: 700;
-    font-size: 18px;
-    box-shadow: 0 4px 8px rgba(211, 47, 47, 0.6);
-    z-index: 999;
-    transition: top 0.5s ease-in-out;
-    user-select: none;
-  }
-
-  #cheater-banner.show {
-    top: 0;
-  }
-
-  #container {
-    max-width: 600px;
-    padding: 20px 25px 30px;
-    margin: 80px auto 40px;
-    background: #2b1300;
-    border-radius: 15px;
-    box-shadow: 0 0 20px #ff5722cc;
-    transition: box-shadow 0.3s ease-in-out;
-  }
-  #container:hover {
-    box-shadow: 0 0 30px #ff7043ee;
-  }
-
-  input[type="text"] {
-    width: 100%;
-    padding: 14px 18px;
-    border: 2px solid #ff5722;
-    border-radius: 12px;
-    font-size: 16px;
-    color: #000;
-    font-weight: 600;
-    letter-spacing: 1px;
-    transition: border-color 0.3s ease;
-    box-sizing: border-box;
-  }
-  input[type="text"]:focus {
-    outline: none;
-    border-color: #f57c00;
-    box-shadow: 0 0 8px #ffab40;
-  }
-
-  button {
-    background: #ff5722;
-    border: none;
-    padding: 14px 25px;
-    margin-top: 15px;
-    border-radius: 12px;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    letter-spacing: 1.2px;
-    box-shadow: 0 4px 8px #ff5722cc;
-    transition: background 0.4s ease, transform 0.2s ease, box-shadow 0.3s ease;
-  }
-  button:hover {
-    background: #ff7043;
-    box-shadow: 0 6px 14px #ff704366;
-    transform: scale(1.07);
-  }
-  button:active {
-    transform: scale(0.97);
-    box-shadow: 0 3px 7px #ff572299;
-  }
-
-  .profile-info {
-    background: #3d1f00;
-    padding: 20px;
-    margin-top: 25px;
-    border-radius: 15px;
-    color: #ffc107;
-    box-shadow: 0 0 15px #ff9800bb;
+  main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
     display: flex;
-    align-items: center;
-    gap: 20px;
-    user-select: none;
-    animation: fadeIn 0.6s ease forwards;
-  }
-  .profile-info img {
-    max-width: 110px;
-    border-radius: 50%;
-    border: 3px solid #f57c00;
-    box-shadow: 0 0 20px #ff9800aa;
-    flex-shrink: 0;
-  }
-  .profile-details {
-    flex: 1;
-    font-size: 17px;
-    font-weight: 600;
-    line-height: 1.3;
-    color: #ffc107;
-  }
-  .profile-field {
-    margin: 8px 0;
-    text-shadow: 0 0 5px #ff9800;
-  }
-  a.profile-link {
-    color: #ffb74d;
-    text-decoration: none;
-    font-weight: 700;
-    transition: color 0.3s ease;
-  }
-  a.profile-link:hover {
-    color: #ffe082;
+    gap: 35px;
   }
 
-  .report-count {
-    font-size: 14px;
-    color: #ffb300;
+  /* Player Card */
+  .player-card {
+    background: linear-gradient(135deg, #1f0a00, #400d00);
+    border-radius: 25px;
+    box-shadow: 0 0 25px #ff5722cc;
+    width: 380px;
+    padding: 30px 25px;
+    position: sticky;
+    top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: box-shadow 0.4s ease;
+  }
+  .player-card:hover {
+    box-shadow: 0 0 45px #ff6f32ff;
+  }
+  .avatar {
+    border-radius: 50%;
+    border: 5px solid #ff7700cc;
+    width: 130px;
+    height: 130px;
+    overflow: hidden;
+    box-shadow: 0 0 18px #ffa040aa;
+    margin-bottom: 18px;
+    transition: transform 0.3s ease;
+  }
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .avatar:hover {
+    transform: scale(1.08);
+  }
+  .player-name {
+    font-size: 26px;
+    font-weight: 900;
+    color: #ffcc80;
+    text-shadow: 0 0 10px #ff6f32;
+    margin-bottom: 20px;
+  }
+  .btns {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 25px;
+  }
+  .btn {
+    padding: 13px 26px;
+    background: #d84315;
+    border: none;
+    border-radius: 18px;
+    color: #fff;
     font-weight: 700;
-    margin-top: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #ff6f32ee;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    user-select: none;
+  }
+  .btn:hover {
+    background: #ff7043;
+    box-shadow: 0 0 28px #ff954c;
+    transform: scale(1.1);
+  }
+  .btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 15px #ff6f3277;
+  }
+
+  .info-list {
+    width: 100%;
+    color: #ffb34d;
+    font-weight: 700;
+    font-size: 18px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
     user-select: text;
   }
-
-  @keyframes fadeIn {
-    from {opacity: 0; transform: translateY(15px);}
-    to {opacity: 1; transform: translateY(0);}
+  .info-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ff6722cc;
+    letter-spacing: 0.9px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .info-list li:last-child {
+    border-bottom: none;
+  }
+  .info-label {
+    color: #ff8f3e;
+  }
+  .info-value {
+    color: #ffcc80;
+    font-weight: 900;
+    font-size: 19px;
   }
 
+  /* Circular Steam Level Progress */
+  .progress-ring {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 20px;
+  }
+  svg {
+    transform: rotate(-90deg);
+    width: 90px;
+    height: 90px;
+  }
+  circle {
+    fill: transparent;
+    stroke-width: 8;
+    stroke-linecap: round;
+  }
+  .progress-ring__circle-bg {
+    stroke: #441a00;
+  }
+  .progress-ring__circle {
+    stroke: #ff5722;
+    transition: stroke-dashoffset 0.35s;
+    transform-origin: center;
+  }
+  .level-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 900;
+    color: #ffbb55;
+    font-size: 22px;
+    text-shadow: 0 0 6px #ff7f32;
+  }
+
+  /* Info Section for next profiles or input */
+  .next-section {
+    flex: 1;
+    background: #291004cc;
+    border-radius: 22px;
+    box-shadow: 0 0 24px #ff6f3222;
+    padding: 30px 25px;
+    display: flex;
+    flex-direction: column;
+  }
+  .next-section h2 {
+    font-weight: 900;
+    font-size: 28px;
+    color: #ff9b3e;
+    margin-bottom: 18px;
+    text-shadow: 0 0 8px #ff6f32;
+    user-select: none;
+  }
+  .next-section label {
+    font-weight: 700;
+    font-size: 16px;
+    color: #ff8c00;
+    margin-bottom: 9px;
+  }
+  .next-section input[type="text"] {
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 2px solid #ff6f32;
+    font-size: 17px;
+    color: #000;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+  }
+  .next-section input[type="text"]:focus {
+    outline: none;
+    border-color: #ff9b48;
+    box-shadow: 0 0 9px #ffbb56aa;
+  }
+  .next-section button {
+    background: #ff6f32;
+    border: none;
+    padding: 14px 26px;
+    border-radius: 16px;
+    font-size: 18px;
+    font-weight: 900;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 28px #ff954c;
+    transition: background 0.4s ease, transform 0.3s ease;
+    user-select: none;
+  }
+  .next-section button:hover {
+    background: #ffaa63;
+    transform: scale(1.05);
+  }
+  .next-section button:active {
+    transform: scale(0.95);
+  }
+  .next-section .info-text {
+    margin-top: 12px;
+    font-weight: 700;
+    font-size: 15px;
+    color: #ffb347cc;
+    user-select: none;
+  }
+
+  /* Small fades for smooth UI */
+  .fadein {
+    animation: fadeInUp 0.7s ease forwards;
+    opacity: 0;
+  }
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+  }
 </style>
 </head>
 <body>
-
 <header>BM_cs-c</header>
-<div id="cheater-banner">این بازیکن چند بار ریپورت شده: <span id="cheatCount">0</span> - CHEATER</div>
+<main>
+  <section class="player-card fadein" id="playerCard">
+    <div class="avatar" id="avatar">
+      <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/8b/8b73fb6a141a4de3b1deb85ad82ae2abe9a4ffe1_full.jpg" alt="آواتار استیم" />
+    </div>
+    <div class="player-name" id="playerName">Mahdiyar LMC</div>
+    <div class="progress-ring" role="img" aria-label="سطح استیم">
+      <svg width="90" height="90">
+        <circle class="progress-ring__circle-bg" stroke="#441a00" stroke-width="8" r="40" cx="45" cy="45" />
+        <circle class="progress-ring__circle" stroke="#ff5722" stroke-width="8" r="40" cx="45" cy="45" stroke-dasharray="251.2" stroke-dashoffset="120" />
+      </svg>
+      <div class="level-text" id="steamLevel">22</div>
+    </div>
+    <ul class="info-list" id="playerInfo">
+      <li><span class="info-label">اد فرند:</span> <a href="https://steamcommunity.com/id/M_LMC/" target="_blank" class="info-value" style="color:#ffa726;">افزودن</a></li>
+      <li><span class="info-label">سن:</span> <span class="info-value">20 سال</span></li>
+      <li><span class="info-label">تایم پلی (ساعت):</span> <span class="info-value">800</span></li>
+      <li><span class="info-label">رنک:</span> <span class="info-value">12000</span></li>
+      <li><span class="info-label">تعداد بازی‌ها:</span> <span class="info-value">12</span></li>
+      <li><span class="info-label">شهر:</span> <span class="info-value">خمین مرکزی</span></li>
+      <li><span class="info-label">آیدی دیسکورد:</span> <span class="info-value">mahdiyar_lmc</span></li>
+    </ul>
+  </section>
 
-<div id="container">
-  <input type="text" id="steamProfileUrl" placeholder="لینک پروفایل استیم (مثلاً https://steamcommunity.com/id/username)" />
-  <button id="fetchBtn">دریافت اطلاعات پروفایل</button>
-  <div id="profileData"></div>
-  <button id="reportBtn" style="display:none;">ریپورت این بازیکن</button>
-</div>
+  <section class="next-section fadein" style="animation-delay: 0.3s;">
+    <h2>مشاهده پروفایل دیگران</h2>
+    <label for="profileUrl">لینک پروفایل استیم</label>
+    <input type="text" id="profileUrl" placeholder="https://steamcommunity.com/id/username" />
+    <button id="loadProfileBtn">نمایش اطلاعات پلیر</button>
+    <div class="info-text" id="infoText">لطفا لینک پروفایل استیم را وارد کنید.</div>
+  </section>
+</main>
 
 <script>
-  const API_KEY = 'DCC2C2C5C66A1BFD9F141D31663AD1D1';
+  // نمونه نیمه استاتیک؛ اطلاعات متغیر دستی وارد شده است
+  const steamLevelCircle = document.querySelector('.progress-ring__circle');
+  const circleRadius = 40;
+  const circumference = 2 * Math.PI * circleRadius;
 
-  const cheaterBanner = document.getElementById('cheater-banner');
-  const cheatCountSpan = document.getElementById('cheatCount');
-  const profileDiv = document.getElementById('profileData');
-  const reportBtn = document.getElementById('reportBtn');
+  function setProgress(level) {
+    const maxLevel = 100;  // سطح ماکزیمم فرضی
+    const percent = Math.min(level, maxLevel) / maxLevel;
+    const offset = circumference * (1 - percent);
+    steamLevelCircle.style.strokeDasharray = circumference;
+    steamLevelCircle.style.strokeDashoffset = offset;
+  }
+  setProgress(22);
 
-  // گزارش‌ها را از localStorage می‌خوانیم
-  function getReportCount(steamId) {
-    const reports = JSON.parse(localStorage.getItem('reportedPlayers') || '{}');
-    return reports[steamId] || 0;
-  }
-  // گزارش‌ها را ذخیره می‌کنیم
-  function setReportCount(steamId, count) {
-    const reports = JSON.parse(localStorage.getItem('reportedPlayers') || '{}');
-    reports[steamId] = count;
-    localStorage.setItem('reportedPlayers', JSON.stringify(reports));
-  }
-  // نمایش نوار ریسک
-  function showCheaterBannerIfNeeded(steamId) {
-    const count = getReportCount(steamId);
-    cheatCountSpan.textContent = count;
-    if (count >= 5) {
-      cheaterBanner.classList.add('show');
-    } else {
-      cheaterBanner.classList.remove('show');
-    }
-  }
+  // توابع آپدیت اطلاعات در پلیر کارت
+  function updatePlayerInfo(profile) {
+    document.getElementById('avatar').querySelector('img').src = profile.avatarfull;
+    document.getElementById('playerName').textContent = profile.personaname || 'Unknown';
+    document.getElementById('steamLevel').textContent = profile.level || '0';
 
-  async function resolveVanityUrl(vanityUrl) {
-    const urlParts = vanityUrl.split('/');
-    const lastPart = urlParts.filter(p => p.trim() !== '').pop();
-    if (/^\d{17}$/.test(lastPart)) {
-      return lastPart;
-    }
-    const response = await fetch(`https://api.steampowered.com/ISteamUser/ResolveVanityURL/v1/?key=${API_KEY}&vanityurl=${lastPart}`);
-    const data = await response.json();
-    if (data.response.success === 1) {
-      return data.response.steamid;
-    } else {
-      throw new Error('نام کاربری یافت نشد.');
-    }
+    // اطلاعات دستی که خواستید
+    const infoList = document.getElementById('playerInfo');
+    infoList.innerHTML = `
+      <li><span class="info-label">اد فرند:</span> <a href="${profile.profileurl}" target="_blank" class="info-value" style="color:#ffa726;">افزودن</a></li>
+      <li><span class="info-label">سن:</span> <span class="info-value">20 سال</span></li>
+      <li><span class="info-label">تایم پلی (ساعت):</span> <span class="info-value">800</span></li>
+      <li><span class="info-label">رنک:</span> <span class="info-value">12000</span></li>
+      <li><span class="info-label">تعداد بازی‌ها:</span> <span class="info-value">12</span></li>
+      <li><span class="info-label">شهر:</span> <span class="info-value">خمین مرکزی</span></li>
+      <li><span class="info-label">آیدی دیسکورد:</span> <span class="info-value">mahdiyar_lmc</span></li>
+    `;
   }
 
-  async function getSteamProfile(steamId) {
-    const response = await fetch(`https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=${API_KEY}&steamids=${steamId}`);
-    const data = await response.json();
-    return data.response.players[0];
-  }
+  // نمونه داده اولیه (شما می توانید با API پویا جایگزین کنید)
+  const exampleProfile = {
+    avatarfull: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/8b/8b73fb6a141a4de3b1deb85ad82ae2abe9a4ffe1_full.jpg',
+    personaname: 'Mahdiyar LMC',
+    profileurl: 'https://steamcommunity.com/id/M_LMC/',
+    level: 22,
+  };
+  updatePlayerInfo(exampleProfile);
+  setProgress(exampleProfile.level);
 
-  async function getSteamLevel(steamId) {
-    const response = await fetch(`https://api.steampowered.com/IPlayerService/GetSteamLevel/v1/?key=${API_KEY}&steamid=${steamId}`);
-    const data = await response.json();
-    return data.response.player_level;
-  }
-
-  async function fetchProfile() {
-    const url = document.getElementById('steamProfileUrl').value.trim();
-    profileDiv.innerHTML = '';
-    reportBtn.style.display = 'none';
-    cheaterBanner.classList.remove('show');
-
-    if (!url) {
-      alert('لطفاً لینک پروفایل استیم را وارد کنید.');
+  // قابلیت بارگذاری پروفایل جدید به صورت ابتدایی
+  document.getElementById('loadProfileBtn').addEventListener('click', () => {
+    const input = document.getElementById('profileUrl').value.trim();
+    if (!input) {
+      document.getElementById('infoText').textContent = 'لطفا لینک پروفایل را وارد کنید.';
       return;
     }
-    try {
-      const steamId = await resolveVanityUrl(url);
-      showCheaterBannerIfNeeded(steamId);
-
-      const profile = await getSteamProfile(steamId);
-      const level = await getSteamLevel(steamId);
-
-      if (!profile) throw new Error('پروفایل یافت نشد.');
-
-      profileDiv.innerHTML = `
-        <div class="profile-info">
-          <img src="${profile.avatarfull}" alt="آواتار پروفایل" />
-          <div class="profile-details">
-            <div class="profile-field"><strong>نام کاربری:</strong> ${profile.personaname}</div>
-            <div class="profile-field"><strong>سطح استیم:</strong> ${level}</div>
-            <div class="profile-field"><strong>وضعیت آنلاین:</strong> ${profile.personastate === 1 ? 'آنلاین' : 'آفلاین'}</div>
-            <div class="profile-field"><strong>لینک پروفایل:</strong> <a class="profile-link" href="${profile.profileurl}" target="_blank">نمایش در استیم</a></div>
-            <div class="report-count">تعداد ریپورت‌ها: ${getReportCount(steamId)}</div>
-          </div>
-        </div>
-      `;
-
-      reportBtn.style.display = 'inline-block';
-      reportBtn.onclick = () => {
-        let count = getReportCount(steamId);
-        count++;
-        setReportCount(steamId, count);
-        alert(`این بازیکن اکنون ${count} بار ریپورت شده است.`);
-        showCheaterBannerIfNeeded(steamId);
-        // بروزرسانی تعداد ریپورت‌ها در نمایش
-        document.querySelector('.report-count').textContent = 'تعداد ریپورت‌ها: ' + count;
-      };
-    } catch (err) {
-      alert('خطا: ' + err.message);
-    }
-  }
-
-  document.getElementById('fetchBtn').addEventListener('click', fetchProfile);
+    // این بخش برای بارگذاری پویا باید API Steam واقعی و سمت سرور باشد
+    // اینجا فقط یه پیام نمایشی قرار داده شده
+    alert('در نسخه آزمایشی فقط پروفایل خودتان نمایش داده می‌شود.');
+  });
 </script>
 
 </body>
