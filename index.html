@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ir gamers - پلیر استیم</title>
+<title>ir gamers </title>
 <style>
   @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
   * {
@@ -21,63 +21,64 @@
     align-items: center;
   }
   .regal-container {
-    width: 700px;
-    height: 270px;
+    width: 900px;
+    height: 320px;
     background: rgba(15,15,15,0.9);
-    border-radius: 18px;
+    border-radius: 20px;
     border: 2px solid #e63946;
-    box-shadow: 0 0 25px #e63946cc;
+    box-shadow: 0 0 30px #e63946cc;
     overflow: hidden;
     position: relative;
     display: flex;
     align-items: center;
-    padding: 20px;
-    gap: 30px;
+    padding: 25px 35px;
+    gap: 40px;
   }
   .regal-wrapper {
     display: flex;
-    width: 1400px; /* 2 * regal width */
+    width: 1800px; /* 2 * regal width + padding */
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .regal-card {
-    width: 700px;
+    width: 900px;
     flex-shrink: 0;
     background: #1a0a0a;
-    border-radius: 12px;
-    padding: 25px;
-    box-shadow: 0 0 20px #ff3a3aaa;
+    border-radius: 16px;
+    padding: 30px 40px;
+    box-shadow: 0 0 28px #ff3a3aaa;
     color: #fff;
     user-select: none;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    position: relative;
   }
-  /* اطلاعات شما */
+  /* اطلاعات پلیر */
   .player-img {
-    width: 130px;
-    height: 130px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     border: 3px solid #ff3a3a;
-    box-shadow: 0 0 18px #ff3a3aaa;
-    margin-bottom: 15px;
+    box-shadow: 0 0 22px #ff3a3aaa;
+    margin-bottom: 18px;
     object-fit: cover;
   }
   .player-name {
-    font-size: 34px;
+    font-size: 36px;
     font-weight: 900;
     color: #ff5555;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
   .btn-add-friend {
     background: linear-gradient(90deg, #ff3a3a, #e63946);
-    padding: 10px 28px;
-    border-radius: 30px;
+    padding: 12px 36px;
+    border-radius: 35px;
     color: white;
     font-weight: 900;
     text-decoration: none;
-    box-shadow: 0 0 20px #ff3a3aaa;
-    margin-bottom: 18px;
+    box-shadow: 0 0 24px #ff3a3aaa;
+    margin-bottom: 22px;
     transition: background 0.3s ease;
   }
   .btn-add-friend:hover {
@@ -87,34 +88,38 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 16px;
+    gap: 18px;
+    margin-bottom: 28px;
   }
   .info-item {
     background: rgba(255,69,69,0.18);
-    border-radius: 14px;
-    box-shadow: 0 0 14px #ff3a3a99;
-    padding: 14px 22px;
-    min-width: 110px;
+    border-radius: 16px;
+    box-shadow: 0 0 18px #ff3a3a99;
+    padding: 16px 26px;
+    min-width: 120px;
     text-align: center;
     cursor: default;
     transition: background 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .info-item:hover {
     background: rgba(255,69,69,0.45);
   }
   .info-icon {
     color: #ff7a7a;
-    font-size: 26px;
-    margin-bottom: 8px;
+    font-size: 28px;
+    margin-bottom: 10px;
   }
   .info-label {
     font-weight: 700;
-    font-size: 16px;
+    font-size: 17px;
     color: #ffa0a0;
   }
   .info-value {
     font-weight: 900;
-    font-size: 20px;
+    font-size: 22px;
     color: white;
   }
   /* کارت + */
@@ -122,56 +127,94 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    padding-top: 20px;
+    color: #ff4444cc;
   }
   .btn-plus {
-    font-size: 90px;
+    font-size: 110px;
     color: #ff4444cc;
     cursor: pointer;
     user-select: none;
     transition: color 0.3s ease;
-    border: 3px solid #ff5555;
+    border: 4px solid #ff5555;
     border-radius: 50%;
-    width: 140px;
-    height: 140px;
+    width: 180px;
+    height: 180px;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 30px #ff5555aa;
+    box-shadow: 0 0 40px #ff5555aa;
+    margin-bottom: 18px;
   }
   .btn-plus:hover {
     color: #ff1f1f;
-    box-shadow: 0 0 40px #ff1f1fcc;
+    box-shadow: 0 0 50px #ff1f1fcc;
     border-color: #ff1f1f;
   }
-  /* دکمه ورق زدن */
+  .plus-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ff5b5b;
+    text-align: center;
+    max-width: 240px;
+    line-height: 1.3;
+  }
+  /* دکمه های ورق زدن */
   .nav-buttons {
     position: absolute;
     bottom: 18px;
-    right: 24px;
+    right: 35px;
     display: flex;
-    gap: 18px;
+    gap: 22px;
   }
   .btn-nav {
     background: transparent;
     color: #e63946;
-    padding: 10px 18px;
+    padding: 12px 22px;
     font-weight: 900;
-    font-size: 18px;
+    font-size: 20px;
     border: 2px solid #e63946;
-    border-radius: 14px;
+    border-radius: 16px;
     cursor: pointer;
     transition: background 0.3s, color 0.3s;
   }
   .btn-nav:hover {
     background: #e63946;
     color: #0a0a0a;
-    box-shadow: 0 0 16px #e63946aa;
+    box-shadow: 0 0 18px #e63946aa;
+  }
+  /* ستاره دهی */
+  .star-rating {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 8px;
+  }
+  .star {
+    font-size: 36px;
+    color: #800000aa;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  .star:hover,
+  .star:hover ~ .star,
+  .star.active,
+  .star.active ~ .star {
+    color: #ff4444dd;
+  }
+  .description {
+    margin-top: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ff6b6b;
+    text-align: center;
   }
 </style>
 </head>
 <body>
 
-<div class="regal-container" role="region" aria-label="رگال اطلاعات و پیام">
+<div class="regal-container" role="region" aria-label="رگال اطلاعات و ارسال پیام">
   <div class="regal-wrapper" id="regalWrapper" style="transform: translateX(0);">
     <!-- کارت اطلاعات پلیر -->
     <div class="regal-card" aria-label="اطلاعات پلیر M_LMC">
@@ -214,15 +257,35 @@
           <div class="info-label">آیدی دیسکورد</div>
           <div class="info-value">@mahdiyar_lmc</div>
         </div>
+        <div class="info-item" title="اینستاگرام">
+          <i class="fa-brands fa-instagram info-icon"></i>
+          <div class="info-label">اینستاگرام</div>
+          <div class="info-value">؟</div>
+        </div>
+        <div class="info-item" title="آیدی تلگرام">
+          <i class="fa-brands fa-telegram info-icon"></i>
+          <div class="info-label">آیدی تلگرام</div>
+          <div class="info-value">@BM1PRO</div>
+        </div>
+      </div>
+      <div class="description">داریوشم ولی بی اقبال</div>
+      <!-- ستاره دهی -->
+      <div class="star-rating" role="radiogroup" aria-label="امتیازدهی به کاربر">
+        <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="1" aria-label="یک ستاره">&#9733;</span>
+        <span class="star" role="radio" aria-checked="false" tabindex="-1" data-value="2" aria-label="دو ستاره">&#9733;</span>
+        <span class="star" role="radio" aria-checked="false" tabindex="-1" data-value="3" aria-label="سه ستاره">&#9733;</span>
+        <span class="star" role="radio" aria-checked="false" tabindex="-1" data-value="4" aria-label="چهار ستاره">&#9733;</span>
+        <span class="star" role="radio" aria-checked="false" tabindex="-1" data-value="5" aria-label="پنج ستاره">&#9733;</span>
       </div>
     </div>
     <!-- کارت + -->
     <div class="regal-card plus-card" aria-label="ارسال پیام">
       <div class="btn-plus" id="btnPlus" tabindex="0" role="button" aria-pressed="false" aria-label="ارسال پیام به ایمیل">+</div>
+      <div class="plus-text">اطلاعاتت رو به این ایمیل بفرست تا<br> برات تا حداکثر 2 روز بسازیم :)</div>
     </div>
   </div>
   <!-- دکمه های ورق زدن -->
-  <div class="nav-buttons">
+  <div class="nav-buttons" role="navigation" aria-label="دکمه های ورق زدن رگال">
     <button class="btn-nav" id="prevBtn" aria-label="رگال قبلی">&lt;</button>
     <button class="btn-nav" id="nextBtn" aria-label="رگال بعدی">&gt;</button>
   </div>
@@ -231,10 +294,10 @@
 <script>
   const regalWrapper = document.getElementById('regalWrapper');
   let currentIndex = 0;
-  const totalCards = 2; // 2 کارت: اطلاعات و +
+  const totalCards = 2;
 
   function updateRegal() {
-    regalWrapper.style.transform = `translateX(-${currentIndex * 700}px)`;
+    regalWrapper.style.transform = `translateX(-${currentIndex * 900}px)`;
   }
 
   document.getElementById('nextBtn').addEventListener('click', () => {
@@ -246,11 +309,10 @@
     updateRegal();
   });
 
-  // دکمه + با باز کردن ایمیل در mailto واقعی
   const btnPlus = document.getElementById('btnPlus');
   btnPlus.addEventListener('click', () => {
     const subject = encodeURIComponent('پیام از سایت ir gamers');
-    const body = encodeURIComponent('لطفا پیام خود را اینجا بنویسید...');
+    const body = encodeURIComponent('لطفا اطلاعات خود را برای ما ارسال کنید تا در کمتر از 2 روز بسازیم :)');
     const mailtoLink = `mailto:bm.pro.ir@gmail.com?subject=${subject}&body=${body}`;
     window.location.href = mailtoLink;
   });
@@ -260,6 +322,37 @@
       btnPlus.click();
     }
   });
+
+  // ستاره دهی
+  const stars = document.querySelectorAll('.star');
+  let selectedRating = 0;
+  stars.forEach((star, idx) => {
+    star.addEventListener('click', () => {
+      selectedRating = idx + 1;
+      updateStars();
+    });
+    star.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        selectedRating = idx + 1;
+        updateStars();
+      }
+    });
+  });
+  function updateStars() {
+    stars.forEach((s, idx) => {
+      if (idx < selectedRating) {
+        s.classList.add('active');
+        s.setAttribute('aria-checked', 'true');
+        s.setAttribute('tabindex', '0');
+      } else {
+        s.classList.remove('active');
+        s.setAttribute('aria-checked', 'false');
+        s.setAttribute('tabindex', '-1');
+      }
+    });
+  }
+  updateStars();
 
   updateRegal();
 </script>
