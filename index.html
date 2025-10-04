@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>پروفایل گیمینگ M_LMC</title>
+<title>IR gamers </title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <style>
 body {
@@ -146,7 +146,7 @@ body {
             <div class="info-row"><i class="fa-solid fa-user"></i><span>M_LMC</span></div>
             <a href="https://steamcommunity.com/id/M_LMC/" target="_blank" class="btn">Add Friend</a>
             <div class="info-row"><i class="fa-solid fa-calendar"></i><span>سن: 20</span></div>
-            <div class="info-row"><i class="fa-solid fa-clock"></i><span>تایم پلی: 800h</span></div>
+            <div class="info-row"><i class="fa-solid fa-clock"></i><span>تایم پلیcs: 800h</span></div>
             <div class="info-row"><i class="fa-solid fa-trophy"></i><span>رنک: 12000</span></div>
             <div class="info-row"><i class="fa-solid fa-gamepad"></i><span>تعداد بازی: 12</span></div>
             <div class="info-row"><i class="fa-solid fa-star"></i><span>Level: 22</span></div>
@@ -192,6 +192,175 @@ document.querySelector('.next').addEventListener('click', () => {
 
 updateCarousel();
 </script>
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ====== Iran Gamers Sticky Footer Banner (Standalone) ====== -->
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+  /* Scoped styles for the banner - safe to paste anywhere */
+  #ig-footer-banner {
+    direction: rtl;
+    font-family: "Vazirmatn", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    pointer-events: auto;
+  }
+
+  #ig-footer-banner .ig-card {
+    width: min(980px, calc(100% - 24px));
+    background: linear-gradient(135deg, rgba(18,18,30,0.96), rgba(30,18,45,0.96));
+    border-radius: 14px;
+    padding: 14px 18px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5), 0 0 18px rgba(130, 60, 200, 0.14) inset;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    backdrop-filter: blur(6px);
+    animation: ig-glow 3s ease-in-out infinite;
+  }
+
+  /* small left accent */
+  #ig-footer-banner .accent {
+    flex: 0 0 52px;
+    height: 52px;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #ff6b6b, #ffb86b);
+    display: grid;
+    place-items: center;
+    font-weight: 900;
+    color: white;
+    box-shadow: 0 6px 20px rgba(255,107,107,0.18);
+  }
+
+  /* text area */
+  #ig-footer-banner .content {
+    flex: 1 1 auto;
+    color: #fff;
+    line-height: 1.4;
+    font-size: 15px;
+  }
+
+  #ig-footer-banner .content .headline {
+    font-weight: 900;
+    font-size: 16px;
+    margin-bottom: 4px;
+    letter-spacing: 0.3px;
+  }
+
+  #ig-footer-banner .content .desc {
+    opacity: 0.95;
+    font-weight: 400;
+  }
+
+  /* email chip */
+  #ig-footer-banner .email {
+    margin-left: 14px;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  #ig-footer-banner .email a {
+    display: inline-block;
+    background: linear-gradient(90deg, rgba(255,255,255,0.96), rgba(240,240,240,0.9));
+    color: #0b0b0b;
+    padding: 10px 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    white-space: nowrap;
+  }
+
+  /* small close button */
+  #ig-footer-banner .close-btn {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.06);
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: transform .15s ease, background .15s;
+  }
+  #ig-footer-banner .close-btn:hover { transform: scale(1.08); background: rgba(255,255,255,0.10); }
+
+  /* subtle pulsing glow */
+  @keyframes ig-glow {
+    0% { box-shadow: 0 8px 30px rgba(0,0,0,0.5), 0 0 6px rgba(130,60,200,0.08) inset; transform: translateY(0); }
+    50% { box-shadow: 0 18px 40px rgba(0,0,0,0.6), 0 0 18px rgba(130,60,200,0.16) inset; transform: translateY(-2px); }
+    100% { box-shadow: 0 8px 30px rgba(0,0,0,0.5), 0 0 6px rgba(130,60,200,0.08) inset; transform: translateY(0); }
+  }
+
+  /* responsive tweaks */
+  @media (max-width: 520px) {
+    #ig-footer-banner .accent { display: none; }
+    #ig-footer-banner .email a { padding: 8px 10px; font-size: 13px; }
+    #ig-footer-banner .content { font-size: 14px; }
+    #ig-footer-banner .ig-card { padding: 12px; border-radius: 10px; }
+  }
+</style>
+
+<div id="ig-footer-banner" aria-label="Iran Gamers - تماس">
+  <div class="ig-card" role="region" aria-labelledby="ig-headline">
+    <div class="accent">BM</div>
+
+    <div class="content">
+      <div id="ig-headline" class="headline">برای ساخت سایت با تم و بخش‌های دلخواه — کاملاً رایگان</div>
+      <div class="desc">
+        برای ساخت این نوع سایت ها با اطلاعات و تم و قسمت و... دلخواه به این ایمیل پیام بدهید:
+        ( ارسال اطلاعات و چیز هایی که میخواید برای سایتتون (کاملا رایگان).
+      </div>
+    </div>
+
+    <div class="email">
+      <a href="mailto:iran.gamers.irangame@gmail.com" title="ارسال ایمیل به iran.gamers.irangame@gmail.com">
+        iran.gamers.irangame@gmail.com
+      </a>
+    </div>
+
+    <button class="close-btn" aria-label="بستن اعلان" onclick="document.getElementById('ig-footer-banner').style.display='none'">✕</button>
+  </div>
+</div>
+<!-- ====== End Banner ====== -->
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>
