@@ -22,81 +22,103 @@
     backdrop-filter: blur(12px);
     background: rgba(15,15,15,0.7);
     border-radius: 14px;
-    padding: 20px 30px 50px;
+    padding: 40px 30px 50px;
     border: 2px solid #e63946;
     box-shadow: 0 0 15px #e63946aa;
+    position: relative;
   }
   h1 {
     color: #e63946;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     font-weight: 900;
     letter-spacing: 4px;
   }
-  .profile-img {
-    width: 150px;
-    height: 150px;
+  /* شناور اطلاعات پلیر */
+  .player-info {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(25, 0, 0, 0.85);
+    border-radius: 20px;
+    box-shadow: 0 0 20px #e63946cc;
+    border: 2px solid #ff3737;
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    animation: floaty 6s ease-in-out infinite;
+    width: 550px;
+    z-index: 1000;
+  }
+  @keyframes floaty {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-12px); }
+  }
+  .player-img {
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
-    border: 3px solid #e63946;
-    margin: 0 auto 10px;
-    display: block;
+    border: 3px solid #ff4747;
+    box-shadow: 0 0 15px #ff4747aa;
     object-fit: cover;
-    box-shadow: 0 0 12px #e63946dd;
   }
-  .steam-name {
-    text-align: center;
+  .player-details {
+    flex-grow: 1;
+    color: #fff;
+  }
+  .player-name {
     font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 8px;
-    color: #ff4f56;
-    letter-spacing: 1.5px;
+    font-weight: 900;
+    margin-bottom: 10px;
+    color: #ff5b5b;
   }
-  .btn-add-friend {
-    display: block;
-    text-align: center;
-    margin: 8px auto 25px;
-    padding: 10px 25px;
+  .add-friend-btn {
+    display: inline-block;
     background: linear-gradient(90deg, #ff3a3a, #e63946);
-    border: none;
+    padding: 8px 20px;
     border-radius: 25px;
-    color: white;
-    text-decoration: none;
+    color: #fff;
     font-weight: 700;
-    box-shadow: 0 0 15px #ff3a3aaa;
+    text-decoration: none;
+    box-shadow: 0 0 12px #ff3a3aaa;
     transition: background 0.3s ease;
+    margin-bottom: 15px;
   }
-  .btn-add-friend:hover {
+  .add-friend-btn:hover {
     background: linear-gradient(90deg, #e63946, #ff3a3a);
   }
-  .info-list {
+  .info-row {
     display: flex;
+    gap: 15px;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
   }
   .info-item {
-    background: rgba(230, 57, 70, 0.15);
+    flex: 1 1 110px;
+    background: rgba(255, 69, 69, 0.15);
     border-radius: 12px;
-    padding: 15px 20px;
-    width: 140px;
+    padding: 10px;
     text-align: center;
-    box-shadow: 0 0 8px #e63946bb;
+    box-shadow: 0 0 8px #ff4747bb;
     transition: background 0.3s ease;
     cursor: default;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .info-item:hover {
-    background: rgba(230, 57, 70, 0.4);
+    background: rgba(255, 69, 69, 0.4);
   }
   .info-icon {
-    font-size: 26px;
-    color: #ff5252;
+    font-size: 24px;
+    color: #ff6f6f;
     margin-bottom: 6px;
-    display: block;
   }
   .info-label {
     font-weight: 600;
     font-size: 14px;
-    color: #ff7b7b;
+    color: #ff8a8a;
   }
   .info-value {
     margin-top: 4px;
@@ -104,250 +126,189 @@
     font-weight: 700;
     color: #fff;
   }
-  /* Regal slider */
-  .regal-slider {
-    margin-top: 40px;
-    position: relative;
-    overflow: visible;
-    user-select: none;
+  
+  /* فرم ورود اطلاعات */
+  .input-section {
+    margin-top: 120px;
+    background: rgba(230, 57, 70, 0.15);
+    border-radius: 20px;
+    padding: 25px 30px;
+    box-shadow: 0 0 15px #ff4a4aaa;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .regal-wrapper {
-    display: flex;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .regal-card {
-    min-width: 280px;
-    margin: 0 12px;
-    background: #151515;
-    border-radius: 16px;
-    box-shadow: 0 0 15px #e63946cc;
-    padding: 20px;
-    color: #ededed;
-    cursor: grab;
-    transform-origin: center center;
-    transition: transform 0.5s ease;
-  }
-  .regal-card.active {
-    transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 0 25px #ff3a3a;
-  }
-  .regal-buttons {
+  .input-section h2 {
     text-align: center;
-    margin-top: 20px;
+    color: #ff5c5c;
+    margin-bottom: 20px;
+    font-weight: 900;
   }
-  .btn-regal {
-    background: transparent;
-    border: 2px solid #e63946;
-    color: #e63946;
-    padding: 10px 16px;
-    margin: 0 8px;
-    border-radius: 12px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background 0.3s ease, color 0.3s ease;
-  }
-  .btn-regal:hover {
-    background: #e63946;
-    color: #1a1a1a;
-    box-shadow: 0 0 15px #ff3a3a;
-  }
-  /* Message form */
-  .msg-form-wrapper {
-    max-width: 350px;
-    margin: 25px auto 0;
-    background: rgba(230, 57, 70, 0.2);
-    border-radius: 15px;
-    padding: 18px 22px;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 0 10px #e63946dd;
-    display: none;
-  }
-  .msg-form-wrapper.active {
-    display: block;
-  }
-  .msg-form-wrapper h3 {
-    color: #ff4444;
-    margin-bottom: 12px;
-    text-align: center;
-  }
-  .msg-form {
+  .form-group {
+    margin-bottom: 15px;
     display: flex;
     flex-direction: column;
   }
-  .msg-form label {
+  label {
+    font-weight: 700;
+    color: #ff7b7b;
     margin-bottom: 6px;
-    font-size: 14px;
-    color: #ff6f6f;
   }
-  .msg-form input,
-  .msg-form textarea {
-    padding: 8px 14px;
-    border-radius: 10px;
+  input, select {
+    padding: 10px 14px;
+    border-radius: 12px;
     border: none;
     background: #222;
     color: #eee;
-    font-size: 14px;
-    margin-bottom: 15px;
+    font-size: 16px;
+  }
+  textarea {
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: none;
+    background: #222;
+    color: #eee;
+    font-size: 16px;
     resize: vertical;
   }
-  .msg-form button {
+  .btn-send {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px 0;
     background: #e63946;
     border: none;
-    border-radius: 20px;
-    padding: 10px;
-    font-weight: 700;
+    border-radius: 30px;
+    font-weight: 900;
     color: white;
+    font-size: 18px;
     cursor: pointer;
     transition: background 0.3s ease;
   }
-  .msg-form button:hover {
+  .btn-send:hover {
     background: #ff2a2a;
   }
-  /* Header gaming mini sections */
-  .header-gaming-minis {
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-    margin-bottom: 28px;
-  }
-  .mini-gaming-item {
-    padding: 12px 25px;
-    border: 2px solid #ff3a3a;
-    border-radius: 30px;
-    color: #ff4c4c;
-    font-weight: 700;
-    font-size: 14px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  .mini-gaming-item:hover {
-    background: #ff3a3a;
-    color: #111;
-    box-shadow: 0 0 15px #ff3a3aaa;
+  .note {
+    font-size: 12px;
+    color: #ff6a6a;
+    margin-top: 10px;
+    text-align: center;
   }
 </style>
 </head>
 <body>
+
 <div class="container">
   <h1>ir gamers</h1>
-  <div class="header-gaming-minis">
-    <div class="mini-gaming-item">News</div>
-    <div class="mini-gaming-item">Tournaments</div>
-    <div class="mini-gaming-item">Shop</div>
-    <div class="mini-gaming-item">Community</div>
-  </div>
-  <img class="profile-img" src="https://avatars.steamstatic.com/cee5c68f707919e52554f27e6931e26e2df244d3_full.jpg" alt="Steam Profile Picture" />
-  <div class="steam-name">M_LMC</div>
-  <a href="https://steamcommunity.com/id/M_LMC/" target="_blank" class="btn-add-friend" rel="noopener">Add Friend</a>
-  <div class="info-list">
-    <div class="info-item" title="سن">
-      <i class="fa-solid fa-user info-icon"></i>
-      <div class="info-label">سن</div>
-      <div class="info-value">20</div>
-    </div>
-    <div class="info-item" title="زمان بازی">
-      <i class="fa-solid fa-clock info-icon"></i>
-      <div class="info-label">تایم پلی</div>
-      <div class="info-value">800 ساعت</div>
-    </div>
-    <div class="info-item" title="رنک">
-      <i class="fa-solid fa-ranking-star info-icon"></i>
-      <div class="info-label">رنک</div>
-      <div class="info-value">12000</div>
-    </div>
-    <div class="info-item" title="تعداد بازی">
-      <i class="fa-solid fa-gamepad info-icon"></i>
-      <div class="info-label">تعداد بازی</div>
-      <div class="info-value">12</div>
-    </div>
-    <div class="info-item" title="سطح استیم">
-      <i class="fa-solid fa-level-up-alt info-icon"></i>
-      <div class="info-label">لول استیم</div>
-      <div class="info-value">22</div>
-    </div>
-    <div class="info-item" title="شهر">
-      <i class="fa-solid fa-location-dot info-icon"></i>
-      <div class="info-label">شهر</div>
-      <div class="info-value">خمین مرکزی</div>
-    </div>
-    <div class="info-item" title="آیدی دیسکورد">
-      <i class="fa-brands fa-discord info-icon"></i>
-      <div class="info-label">آیدی دیسکورد</div>
-      <div class="info-value">@mahdiyar_lmc</div>
-    </div>
-  </div>
-  <div class="regal-slider">
-    <div class="regal-wrapper" id="regalWrapper">
-      <div class="regal-card active">
-        <h3>اطلاعات پلیر</h3>
-        <p>نمایش اطلاعات شما با انیمیشن شناور و ورق زدنی.</p>
-      </div>
-      <div class="regal-card">
-        <h3>ارسال پیام</h3>
-        <button id="msgToggle" class="btn-regal">+</button>
+
+  <!-- اطلاعات پلیر شناور -->
+  <section class="player-info" aria-label="اطلاعات پلیر">
+    <img src="https://avatars.steamstatic.com/cee5c68f707919e52554f27e6931e26e2df244d3_full.jpg" alt="تصویر پروفایل استیم" class="player-img" />
+    <div class="player-details">
+      <div class="player-name">M_LMC</div>
+      <a href="https://steamcommunity.com/id/M_LMC/" target="_blank" class="add-friend-btn" rel="noopener">اد فرند</a>
+      <div class="info-row">
+        <div class="info-item" title="سن">
+          <i class="fa-solid fa-user info-icon"></i>
+          <div class="info-label">سن</div>
+          <div class="info-value">20</div>
+        </div>
+        <div class="info-item" title="تایم پلی">
+          <i class="fa-solid fa-clock info-icon"></i>
+          <div class="info-label">تایم پلی</div>
+          <div class="info-value">800 ساعت</div>
+        </div>
+        <div class="info-item" title="رنک">
+          <i class="fa-solid fa-ranking-star info-icon"></i>
+          <div class="info-label">رنک</div>
+          <div class="info-value">12000</div>
+        </div>
+        <div class="info-item" title="تعداد بازی">
+          <i class="fa-solid fa-gamepad info-icon"></i>
+          <div class="info-label">تعداد بازی</div>
+          <div class="info-value">12</div>
+        </div>
+        <div class="info-item" title="لول استیم">
+          <i class="fa-solid fa-level-up-alt info-icon"></i>
+          <div class="info-label">لول استیم</div>
+          <div class="info-value">22</div>
+        </div>
+        <div class="info-item" title="شهر">
+          <i class="fa-solid fa-location-dot info-icon"></i>
+          <div class="info-label">شهر</div>
+          <div class="info-value">خمین مرکزی</div>
+        </div>
+        <div class="info-item" title="آیدی دیسکورد">
+          <i class="fa-brands fa-discord info-icon"></i>
+          <div class="info-label">آیدی دیسکورد</div>
+          <div class="info-value">@mahdiyar_lmc</div>
+        </div>
       </div>
     </div>
-    <div class="regal-buttons">
-      <button id="prevBtn" class="btn-regal">&lt; قبلی</button>
-      <button id="nextBtn" class="btn-regal">بعدی &gt;</button>
-    </div>
-  </div>
-  <div class="msg-form-wrapper" id="msgFormWrapper">
-    <h3>ارسال پیام به bm.pro.ir@gmail.com</h3>
-    <form class="msg-form" onsubmit="sendMessage(event)">
-      <label for="email">ایمیل شما</label>
-      <input type="email" id="email" required placeholder="Your Email" />
-      <label for="message">متن پیام</label>
-      <textarea id="message" rows="4" required placeholder="متن پیام خود را وارد کنید..."></textarea>
-      <button type="submit">ارسال</button>
+  </section>
+
+  <!-- فرم اطلاعات کاربر -->
+  <section class="input-section" aria-label="ورود اطلاعات کاربر">
+    <h2>وارد کردن اطلاعات و ارسال پیام</h2>
+    <form id="playerForm" action="mailto:bm.pro.ir@gmail.com" method="POST" enctype="text/plain" style="display:flex; flex-direction: column;" onsubmit="return prepareMail()">
+      <div class="form-group">
+        <label for="username">نام استیم</label>
+        <input type="text" id="username" name="نام استیم" required placeholder="اسم استیم شما" />
+      </div>
+      <div class="form-group">
+        <label for="age">سن</label>
+        <input type="number" id="age" name="سن" required min="10" max="120" placeholder="سن شما" />
+      </div>
+      <div class="form-group">
+        <label for="playtime">تایم پلی (ساعت)</label>
+        <input type="number" id="playtime" name="تایم پلی" required min="0" placeholder="مدت زمان بازی" />
+      </div>
+      <div class="form-group">
+        <label for="rank">رنک</label>
+        <input type="number" id="rank" name="رنک" required min="0" placeholder="رنک شما" />
+      </div>
+      <div class="form-group">
+        <label for="gamescount">تعداد بازی</label>
+        <input type="number" id="gamescount" name="تعداد بازی" required min="0" placeholder="چند بازی دارید؟" />
+      </div>
+      <div class="form-group">
+        <label for="steamlevel">لول استیم</label>
+        <input type="number" id="steamlevel" name="لول استیم" required min="0" max="1000" placeholder="سطح استیم شما" />
+      </div>
+      <div class="form-group">
+        <label for="city">شهر</label>
+        <input type="text" id="city" name="شهر" required placeholder="شهر محل سکونت" />
+      </div>
+      <div class="form-group">
+        <label for="discordid">آیدی دیسکورد</label>
+        <input type="text" id="discordid" name="آیدی دیسکورد" required placeholder="@discordid" />
+      </div>
+      <div class="form-group">
+        <label for="message">متن پیام</label>
+        <textarea id="message" name="پیام" rows="4" required placeholder="متن پیام خود را اینجا بنویسید..."></textarea>
+      </div>
+      <button type="submit" class="btn-send">ارسال پیام</button>
     </form>
-  </div>
+    <p class="note">پیام شما بعد از ارسال به ایمیل bm.pro.ir@gmail.com می‌رود.</p>
+  </section>
+
 </div>
 
 <script>
-  let currentIndex = 0;
-  const regalWrapper = document.getElementById('regalWrapper');
-  const cards = regalWrapper.children;
-  const totalCards = cards.length;
+  // این کد آماده سازی متن ایمیل برای mailto است که در فرم استفاده شده
+  function prepareMail() {
+    const form = document.getElementById('playerForm');
+    const data = new FormData(form);
 
-  function updateSlider() {
-    for (let i = 0; i < totalCards; i++) {
-      cards[i].classList.remove('active');
+    let body = '';
+    for (let [key, value] of data.entries()) {
+      body += `${key}: ${value}%0D%0A`;
     }
-    cards[currentIndex].classList.add('active');
-    regalWrapper.style.transform = `translateX(-${currentIndex * 320}px)`;
+
+    const mailtoLink = `mailto:bm.pro.ir@gmail.com?subject=پیام از سایت ir gamers&body=${body}`;
+    window.location.href = mailtoLink;
+    return false; // جلوگیری از ارسال فرم به صورت عادی
   }
-
-  document.getElementById('nextBtn').addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % totalCards;
-    updateSlider();
-  });
-
-  document.getElementById('prevBtn').addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + totalCards) % totalCards;
-    updateSlider();
-  });
-
-  // Toggle message form
-  const msgToggle = document.getElementById('msgToggle');
-  const msgWrapper = document.getElementById('msgFormWrapper');
-  msgToggle.addEventListener('click', () => {
-    msgWrapper.classList.toggle('active');
-  });
-
-  // Fake send message function
-  function sendMessage(e) {
-    e.preventDefault();
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    alert(`پیام شما به ${email} ارسال شد (شبیه‌سازی).`);
-    e.target.reset();
-    msgWrapper.classList.remove('active');
-  }
-
-  // Initialize slider
-  updateSlider();
 </script>
+
 </body>
 </html>
