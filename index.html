@@ -1,358 +1,197 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ir gamers - پلیر استیم</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پروفایل گیمینگ M_LMC</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <style>
-  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;  
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #0a0a0a;
-    color: #eee;
-    overflow-x: hidden;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .regal-container {
-    width: 960px;
-    height: 350px;
-    background: rgba(15,15,15,0.95);
-    border-radius: 22px;
-    border: 3px solid #e63946;
-    box-shadow: 0 0 30px #e63946cc;
-    overflow: hidden;
+body {
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    background:#111;
+    color:#fff;
+    overflow-x:hidden;
+}
+.header {
+    display:flex;
+    justify-content:center;
+    padding:20px;
+    gap:15px;
+}
+.header .icon {
+    font-size:24px;
+    color:#ff1a1a;
+    cursor:pointer;
+    transition:0.3s;
+}
+.header .icon:hover { color:#ff4d4d; }
+
+.carousel-container {
+    perspective:1200px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:700px;
+    position:relative;
+}
+.carousel {
+    width:400px;
+    height:600px;
+    transform-style: preserve-3d;
+    transition: transform 1s;
     position: relative;
-    display: flex;
-    align-items: center;
-    padding: 30px 40px;
-    gap: 48px;
-  }
-  .regal-wrapper {
-    display: flex;
-    width: 1920px; /* 2 * regal width */
-    transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .regal-card {
-    width: 960px;
-    flex-shrink: 0;
-    background: #1a0a0a;
-    border-radius: 18px;
-    padding: 36px 48px;
-    box-shadow: 0 0 32px #ff3a3aaa;
-    color: #fff;
-    user-select: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    position: relative;
-  }
-  /* اطلاعات پلیر */
-  .player-img {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    border: 3.5px solid #ff3a3a;
-    box-shadow: 0 0 25px #ff3a3aaa;
-    margin-bottom: 22px;
-    object-fit: cover;
-  }
-  .player-name {
-    font-size: 38px;
-    font-weight: 900;
-    color: #ff5555;
-    margin-bottom: 20px;
-  }
-  .btn-add-friend {
-    background: linear-gradient(90deg, #ff3a3a, #e63946);
-    padding: 14px 40px;
-    border-radius: 38px;
-    color: white;
-    font-weight: 900;
-    text-decoration: none;
-    box-shadow: 0 0 28px #ff3a3aaa;
-    margin-bottom: 30px;
-    transition: background 0.3s ease;
-  }
-  .btn-add-friend:hover {
-    background: linear-gradient(90deg, #e63946, #ff3a3a);
-  }
-  .info-list {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .info-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    background: rgba(255,69,69,0.18);
-    border-radius: 18px;
-    box-shadow: 0 0 20px #ff3a3a99;
-    padding: 14px 24px;
-    cursor: default;
-    font-size: 18px;
-    font-weight: 600;
-  }
-  .info-icon {
-    color: #ff7a7a;
-    font-size: 30px;
-    min-width: 42px;
-    text-align: center;
-  }
-  .info-label {
-    color: #ffa0a0;
-    width: 160px;
-  }
-  .info-value {
-    color: white;
-    flex-grow: 1;
-    font-weight: 900;
-    font-size: 20px;
-  }
-  .description {
-    margin-top: 28px;
-    font-size: 20px;
-    font-weight: 700;
-    color: #ff6b6b;
-    text-align: center;
-  }
-  /* کارت + */
-  .plus-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-    padding-top: 30px;
-    color: #ff4444cc;
-  }
-  .btn-plus {
-    font-size: 120px;
-    color: #ff4444cc;
-    cursor: pointer;
-    user-select: none;
-    transition: color 0.3s ease;
-    border: 5px solid #ff5555;
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 45px #ff5555aa;
-  }
-  .btn-plus:hover {
-    color: #ff1f1f;
-    box-shadow: 0 0 55px #ff1f1fcc;
-    border-color: #ff1f1f;
-  }
-  .plus-text {
-    font-size: 20px;
-    font-weight: 700;
-    color: #ff5b5b;
-    text-align: center;
-    max-width: 280px;
-    line-height: 1.4;
-  }
-  /* دکمه های ورق زدن */
-  .nav-buttons {
-    position: absolute;
-    bottom: 22px;
-    right: 40px;
-    display: flex;
-    gap: 26px;
-  }
-  .btn-nav {
-    background: transparent;
-    color: #e63946;
-    padding: 14px 26px;
-    font-weight: 900;
-    font-size: 22px;
-    border: 2.5px solid #e63946;
-    border-radius: 18px;
-    cursor: pointer;
-    transition: background 0.3s, color 0.3s;
-  }
-  .btn-nav:hover {
-    background: #e63946;
-    color: #0a0a0a;
-    box-shadow: 0 0 20px #e63946aa;
-  }
-  /* ستاره دهی */
-  .star-rating {
-    margin-top: 30px;
-    display: flex;
-    gap: 18px;
-    justify-content: center;
-  }
-  .star {
-    font-size: 40px;
-    color: #800000aa;
-    cursor: pointer;
-    transition: color 0.3s ease;
-    user-select: none;
-  }
-  .star.active {
-    color: #ff4444dd;
-  }
-  .star:hover,
-  .star:hover ~ .star {
-    color: #ff6a6a;
-  }
+}
+.carousel-item {
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#1a1a1a;
+    border:2px solid #ff1a1a;
+    border-radius:15px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:start;
+    padding:20px;
+    box-sizing:border-box;
+    backface-visibility:hidden;
+    transition: transform 1s, opacity 1s;
+}
+.carousel-item img {
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    border:2px solid #ff1a1a;
+    margin-bottom:15px;
+}
+.info-row {
+    display:flex;
+    align-items:center;
+    margin:5px 0;
+    gap:10px;
+}
+.info-row i { color:#ff1a1a; min-width:25px; text-align:center; }
+.info-row span { flex:1; }
+
+.btn {
+    margin-top:15px;
+    padding:10px 20px;
+    background:#ff1a1a;
+    border:none;
+    border-radius:10px;
+    color:#fff;
+    cursor:pointer;
+    text-decoration:none;
+    transition:0.3s;
+}
+.btn:hover { background:#ff4d4d; }
+
+.nav-btn {
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:30px;
+    background:rgba(0,0,0,0.5);
+    border-radius:50%;
+    padding:10px;
+    cursor:pointer;
+    color:#ff1a1a;
+    user-select:none;
+    z-index:10;
+}
+.nav-btn:hover { background:rgba(0,0,0,0.8); color:#ff4d4d; }
+.prev { left:-70px; }
+.next { right:-70px; }
+
+.plus-section {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    flex:1;
+    margin-top:50px;
+}
+.plus-btn {
+    font-size:60px;
+    color:#ff1a1a;
+    border:2px solid #ff1a1a;
+    border-radius:50%;
+    width:100px;
+    height:100px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:0.3s;
+}
+.plus-btn:hover { background:#ff1a1a; color:#111; }
+.plus-text { margin-top:20px; text-align:center; color:#ff6666; font-size:16px; }
 </style>
 </head>
 <body>
 
-<div class="regal-container" role="region" aria-label="رگال اطلاعات و ارسال پیام">
-  <div class="regal-wrapper" id="regalWrapper" style="transform: translateX(0);">
-    <!-- کارت اطلاعات پلیر -->
-    <div class="regal-card" aria-label="اطلاعات پلیر M_LMC">
-      <img src="https://avatars.steamstatic.com/cee5c68f707919e52554f27e6931e26e2df244d3_full.jpg" alt="تصویر پروفایل استیم M_LMC" class="player-img" />
-      <div class="player-name">M_LMC</div>
-      <a href="https://steamcommunity.com/id/M_LMC/" target="_blank" class="btn-add-friend" rel="noopener">اد فرند</a>
-      <div class="info-list" role="list">
-        <div class="info-item" title="سن" role="listitem">
-          <i class="fa-solid fa-user info-icon"></i>
-          <div class="info-label">سن</div>
-          <div class="info-value">20</div>
+<div class="header">
+    <i class="fa-brands fa-steam icon"></i>
+    <i class="fa-solid fa-gamepad icon"></i>
+    <i class="fa-solid fa-bolt icon"></i>
+</div>
+
+<div class="carousel-container">
+    <div class="nav-btn prev">&#10094;</div>
+    <div class="carousel" id="carousel">
+        <!-- بخش 1: پروفایل استیم -->
+        <div class="carousel-item" style="transform: rotateY(0deg) translateZ(300px);">
+            <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/your_avatar.jpg" alt="M_LMC">
+            <div class="info-row"><i class="fa-solid fa-user"></i><span>M_LMC</span></div>
+            <a href="https://steamcommunity.com/id/M_LMC/" target="_blank" class="btn">Add Friend</a>
+            <div class="info-row"><i class="fa-solid fa-calendar"></i><span>سن: 20</span></div>
+            <div class="info-row"><i class="fa-solid fa-clock"></i><span>تایم پلی: 800h</span></div>
+            <div class="info-row"><i class="fa-solid fa-trophy"></i><span>رنک: 12000</span></div>
+            <div class="info-row"><i class="fa-solid fa-gamepad"></i><span>تعداد بازی: 12</span></div>
+            <div class="info-row"><i class="fa-solid fa-star"></i><span>Level: 22</span></div>
+            <div class="info-row"><i class="fa-solid fa-city"></i><span>شهر: خمین مرکزی</span></div>
+            <div class="info-row"><i class="fa-solid fa-pen"></i><span>توضیحات: داریوشم ولی بی اقبال</span></div>
+            <div class="info-row"><i class="fa-brands fa-instagram"></i><span>اینستاگرام: ?</span></div>
+            <div class="info-row"><i class="fa-brands fa-telegram"></i><span>تلگرام: @BM1PRO</span></div>
+            <div class="info-row"><i class="fa-brands fa-discord"></i><span>دیسکورد: @mahdiyar_lmc</span></div>
         </div>
-        <div class="info-item" title="تایم پلی" role="listitem">
-          <i class="fa-solid fa-clock info-icon"></i>
-          <div class="info-label">تایم پلی</div>
-          <div class="info-value">800 ساعت</div>
+        <!-- بخش 2: + ارسال اطلاعات -->
+        <div class="carousel-item" style="transform: rotateY(180deg) translateZ(300px);">
+            <div class="plus-section">
+                <div class="plus-btn">+</div>
+                <div class="plus-text">
+                    اطلاعات خودتون رو برای ساخت پروفایل ارسال کنید.<br>
+                    ایمیل: <b>bm.pro.ir@gmail.com</b><br>
+                    حداکثر تا 2 روز ساخته می‌شود.
+                </div>
+            </div>
         </div>
-        <div class="info-item" title="رنک" role="listitem">
-          <i class="fa-solid fa-ranking-star info-icon"></i>
-          <div class="info-label">رنک</div>
-          <div class="info-value">12000</div>
-        </div>
-        <div class="info-item" title="تعداد بازی" role="listitem">
-          <i class="fa-solid fa-gamepad info-icon"></i>
-          <div class="info-label">تعداد بازی</div>
-          <div class="info-value">12</div>
-        </div>
-        <div class="info-item" title="لول استیم" role="listitem">
-          <i class="fa-solid fa-level-up-alt info-icon"></i>
-          <div class="info-label">لول استیم</div>
-          <div class="info-value">22</div>
-        </div>
-        <div class="info-item" title="شهر" role="listitem">
-          <i class="fa-solid fa-location-dot info-icon"></i>
-          <div class="info-label">شهر</div>
-          <div class="info-value">خمین مرکزی</div>
-        </div>
-        <div class="info-item" title="آیدی دیسکورد" role="listitem">
-          <i class="fa-brands fa-discord info-icon"></i>
-          <div class="info-label">آیدی دیسکورد</div>
-          <div class="info-value">@mahdiyar_lmc</div>
-        </div>
-        <div class="info-item" title="اینستاگرام" role="listitem">
-          <i class="fa-brands fa-instagram info-icon"></i>
-          <div class="info-label">اینستاگرام</div>
-          <div class="info-value">؟</div>
-        </div>
-        <div class="info-item" title="آیدی تلگرام" role="listitem">
-          <i class="fa-brands fa-telegram info-icon"></i>
-          <div class="info-label">آیدی تلگرام</div>
-          <div class="info-value">@BM1PRO</div>
-        </div>
-      </div>
-      <div class="description" aria-label="توضیحات پلیر">داریوشم ولی بی اقبال</div>
-      <!-- ستاره دهی -->
-      <div class="star-rating" role="radiogroup" aria-label="امتیازدهی به کاربر">
-        <span class="star" role="radio" aria-checked="false" tabindex="0" data-value="1" aria-label="یک ستاره">&#9733;</span>
-        <span class="star" role="radio" aria-checked="false" tabindex="-1" data-value="2" aria-label="دو ستاره">&#9733;</span>
-        <span class="star" role="radio" aria-checked="false" tabindex="-1" data-value="3" aria-label="سه ستاره">&#9733;</span>
-        <span class="star" role="radio" aria-checked="false" tabindex="-1" data-value="4" aria-label="چهار ستاره">&#9733;</span>
-        <span class="star" role="radio" aria-checked="false" tabindex="-1" data-value="5" aria-label="پنج ستاره">&#9733;</span>
-      </div>
     </div>
-    <!-- کارت + -->
-    <div class="regal-card plus-card" aria-label="ارسال پیام">
-      <div class="btn-plus" id="btnPlus" tabindex="0" role="button" aria-pressed="false" aria-label="ارسال پیام به ایمیل">+</div>
-      <div class="plus-text">اطلاعاتت رو به این ایمیل بفرست تا<br> برات تا حداکثر 2 روز بسازیم :)</div>
-    </div>
-  </div>
-  <!-- دکمه های ورق زدن -->
-  <div class="nav-buttons" role="navigation" aria-label="دکمه های ورق زدن رگال">
-    <button class="btn-nav" id="prevBtn" aria-label="رگال قبلی">&lt;</button>
-    <button class="btn-nav" id="nextBtn" aria-label="رگال بعدی">&gt;</button>
-  </div>
+    <div class="nav-btn next">&#10095;</div>
 </div>
 
 <script>
-  const regalWrapper = document.getElementById('regalWrapper');
-  let currentIndex = 0;
-  const totalCards = 2;
+const carousel = document.getElementById('carousel');
+const items = carousel.children;
+let index = 0;
 
-  function updateRegal() {
-    regalWrapper.style.transform = `translateX(-${currentIndex * 960}px)`;
-  }
+function updateCarousel() {
+    const angle = (360 / items.length) * index;
+    carousel.style.transform = `translateZ(-300px) rotateY(-${angle}deg)`;
+}
 
-  document.getElementById('nextBtn').addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % totalCards;
-    updateRegal();
-  });
-  document.getElementById('prevBtn').addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + totalCards) % totalCards;
-    updateRegal();
-  });
+document.querySelector('.prev').addEventListener('click', () => {
+    index = (index - 1 + items.length) % items.length;
+    updateCarousel();
+});
+document.querySelector('.next').addEventListener('click', () => {
+    index = (index + 1) % items.length;
+    updateCarousel();
+});
 
-  const btnPlus = document.getElementById('btnPlus');
-  btnPlus.addEventListener('click', () => {
-    const subject = encodeURIComponent('پیام از سایت ir gamers');
-    const body = encodeURIComponent('لطفا اطلاعات خود را برای ما ارسال کنید تا در کمتر از 2 روز بسازیم :)');
-    const mailtoLink = `mailto:bm.pro.ir@gmail.com?subject=${subject}&body=${body}`;
-    window.location.href = mailtoLink;
-  });
-  btnPlus.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      btnPlus.click();
-    }
-  });
-
-  // ستاره دهی
-  const stars = document.querySelectorAll('.star');
-  let selectedRating = 0;
-  stars.forEach((star, idx) => {
-    star.addEventListener('click', () => {
-      selectedRating = idx + 1;
-      updateStars();
-    });
-    star.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        selectedRating = idx + 1;
-        updateStars();
-      }
-    });
-  });
-  function updateStars() {
-    stars.forEach((s, idx) => {
-      if (idx < selectedRating) {
-        s.classList.add('active');
-        s.setAttribute('aria-checked', 'true');
-        s.setAttribute('tabindex', '0');
-      } else {
-        s.classList.remove('active');
-        s.setAttribute('aria-checked', 'false');
-        s.setAttribute('tabindex', '-1');
-      }
-    });
-  }
-  updateStars();
-
-  updateRegal();
+updateCarousel();
 </script>
+
 </body>
 </html>
