@@ -3,355 +3,510 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IR gamers </title>
+<title>IR Gamers.bm</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 body {
-    margin:0;
-    font-family: 'Segoe UI', sans-serif;
-    background:#111;
-    color:#fff;
-    overflow-x:hidden;
+  margin:0;
+  font-family:'Vazirmatn',sans-serif;
+  background:#0b0b0f;
+  color:#fff;
+  overflow-x:hidden;
+  min-height:100vh;
 }
+/* Header */
 .header {
-    display:flex;
-    justify-content:center;
-    padding:20px;
-    gap:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 30px;
 }
 .header .icon {
-    font-size:24px;
-    color:#ff1a1a;
-    cursor:pointer;
-    transition:0.3s;
+  font-size:24px;
+  color:#39ff14;
+  cursor:pointer;
+  transition:0.3s;
+  text-shadow:0 0 8px #39ff14;
 }
-.header .icon:hover { color:#ff4d4d; }
-
+.header .icon:hover {
+  color:#0ff;
+  text-shadow:0 0 12px #0ff;
+}
+.site-name {
+  font-weight:900;
+  font-size:24px;
+  background:linear-gradient(90deg,#39ff14,#0ff,#ff00ff,#39ff14);
+  background-size:300%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:moveColor 6s linear infinite;
+  letter-spacing:1px;
+  text-shadow:0 0 10px rgba(0,255,255,0.4);
+}
+@keyframes moveColor {
+  0% {background-position:0%;}
+  100% {background-position:300%;}
+}
+/* Carousel */
 .carousel-container {
-    perspective:1200px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:700px;
-    position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+  height:700px;
+  perspective:1200px;
+  margin-top:20px;
 }
 .carousel {
-    width:400px;
-    height:600px;
-    transform-style: preserve-3d;
-    transition: transform 1s;
-    position: relative;
+  width:400px;
+  height:600px;
+  transform-style:preserve-3d;
+  transition:transform 1s;
+  position:relative;
 }
 .carousel-item {
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:#1a1a1a;
-    border:2px solid #ff1a1a;
-    border-radius:15px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:start;
-    padding:20px;
-    box-sizing:border-box;
-    backface-visibility:hidden;
-    transition: transform 1s, opacity 1s;
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(20,20,30,0.95);
+  border:2px solid #39ff14;
+  border-radius:20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:start;
+  padding:25px;
+  box-sizing:border-box;
+  backface-visibility:hidden;
+  box-shadow:0 0 30px rgba(57,255,20,0.2);
+  transition:transform 1s,opacity 1s;
 }
 .carousel-item img {
-    width:120px;
-    height:120px;
-    border-radius:50%;
-    border:2px solid #ff1a1a;
-    margin-bottom:15px;
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  border:3px solid #39ff14;
+  margin-bottom:15px;
+  box-shadow:0 0 20px rgba(57,255,20,0.4);
 }
 .info-row {
-    display:flex;
-    align-items:center;
-    margin:5px 0;
-    gap:10px;
+  display:flex;
+  align-items:center;
+  margin:6px 0;
+  gap:10px;
+  font-size:15px;
 }
-.info-row i { color:#ff1a1a; min-width:25px; text-align:center; }
-.info-row span { flex:1; }
-
+.info-row i {
+  color:#39ff14;
+  min-width:25px;
+  text-align:center;
+  text-shadow:0 0 8px #39ff14;
+}
+.info-row span {flex:1;}
 .btn {
-    margin-top:15px;
-    padding:10px 20px;
-    background:#ff1a1a;
-    border:none;
-    border-radius:10px;
-    color:#fff;
-    cursor:pointer;
-    text-decoration:none;
-    transition:0.3s;
+  margin-top:15px;
+  padding:10px 20px;
+  background:linear-gradient(90deg,#39ff14,#0ff);
+  border:none;
+  border-radius:12px;
+  color:#000;
+  cursor:pointer;
+  text-decoration:none;
+  font-weight:700;
+  transition:0.3s;
 }
-.btn:hover { background:#ff4d4d; }
-
+.btn:hover {transform:scale(1.05);}
+/* Nav Buttons */
 .nav-btn {
-    position:absolute;
-    top:50%;
-    transform:translateY(-50%);
-    font-size:30px;
-    background:rgba(0,0,0,0.5);
-    border-radius:50%;
-    padding:10px;
-    cursor:pointer;
-    color:#ff1a1a;
-    user-select:none;
-    z-index:10;
+  font-size:30px;
+  background:rgba(0,0,0,0.5);
+  border-radius:50%;
+  padding:10px;
+  cursor:pointer;
+  color:#39ff14;
+  user-select:none;
+  box-shadow:0 0 10px rgba(57,255,20,0.4);
+  transition:0.3s;
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
 }
-.nav-btn:hover { background:rgba(0,0,0,0.8); color:#ff4d4d; }
-.prev { left:-70px; }
-.next { right:-70px; }
-
+.nav-btn:hover {
+  background:rgba(57,255,20,0.15);
+  color:#0ff;
+}
+.prev {left:calc(50% - 270px);}
+.next {right:calc(50% - 270px);}
+/* Plus Section */
 .plus-section {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    flex:1;
-    margin-top:50px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  flex:1;
+  margin-top:50px;
+  text-align:center;
 }
 .plus-btn {
-    font-size:60px;
-    color:#ff1a1a;
-    border:2px solid #ff1a1a;
-    border-radius:50%;
-    width:100px;
-    height:100px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    transition:0.3s;
+  font-size:70px;
+  color:#0ff;
+  border:2px solid #0ff;
+  border-radius:50%;
+  width:110px;
+  height:110px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:0.3s;
+  box-shadow:0 0 20px rgba(0,255,255,0.3);
 }
-.plus-btn:hover { background:#ff1a1a; color:#111; }
-.plus-text { margin-top:20px; text-align:center; color:#ff6666; font-size:16px; }
+.plus-btn:hover {
+  background:#0ff;
+  color:#111;
+  box-shadow:0 0 25px #0ff;
+}
+.plus-text {
+  margin-top:20px;
+  color:#39ff14;
+  font-size:16px;
+}
+/* Responsive */
+@media (max-width:700px) {
+  .carousel {
+    width:90%;
+    height:auto;
+  }
+  .carousel-item {height:auto;}
+  .prev {left:10px;}
+  .next {right:10px;}
+  .nav-btn {top:45%;}
+  .site-name {font-size:20px;}
+}
+/* Footer Banner */
+#ig-footer-banner {
+  direction:rtl;
+  font-family:"Vazirmatn",sans-serif;
+  position:fixed;
+  left:12px; right:12px; bottom:12px;
+  z-index:9999;
+  display:flex; justify-content:center;
+}
+#ig-footer-banner .ig-card {
+  width:min(980px,calc(100% - 24px));
+  background:linear-gradient(135deg,rgba(15,15,25,0.96),rgba(30,30,40,0.96));
+  border-radius:14px;
+  padding:14px 18px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.5),0 0 18px rgba(0,255,255,0.2) inset;
+  display:flex; align-items:center; gap:16px;
+  border:1px solid rgba(255,255,255,0.06);
+  backdrop-filter:blur(6px);
+  animation:ig-glow 3s ease-in-out infinite;
+}
+#ig-footer-banner .accent {
+  flex:0 0 52px; height:52px;
+  border-radius:10px;
+  background:linear-gradient(180deg,#39ff14,#0ff);
+  display:grid; place-items:center;
+  font-weight:900; color:white;
+  box-shadow:0 6px 20px rgba(57,255,20,0.3);
+}
+#ig-footer-banner .content {flex:1; color:#fff; line-height:1.4; font-size:15px;}
+#ig-footer-banner .headline {font-weight:900; font-size:16px; margin-bottom:4px; color:#0ff;}
+#ig-footer-banner .desc {opacity:0.9;}
+#ig-footer-banner .email {
+  margin-left:14px;
+  flex:0 0 auto;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+#ig-footer-banner .email a {
+  display:inline-block;
+  background:linear-gradient(90deg,#39ff14,#0ff);
+  color:#000;
+  padding:10px 14px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:700;
+  box-shadow:0 6px 18px rgba(0,0,0,0.18);
+  white-space:nowrap;
+  transition:0.3s;
+}
+#ig-footer-banner .email a:hover {transform:scale(1.05);}
+#ig-footer-banner .close-btn {
+  position:absolute;
+  top:-8px; right:-8px;
+  background:rgba(255,255,255,0.08);
+  color:#fff;
+  border:1px solid rgba(255,255,255,0.06);
+  width:30px; height:30px;
+  border-radius:999px;
+  display:grid; place-items:center;
+  cursor:pointer;
+  backdrop-filter:blur(4px);
+  transition:transform .15s ease,background .15s;
+}
+#ig-footer-banner .close-btn:hover {transform:scale(1.08); background:rgba(255,255,255,0.15);}
+@keyframes ig-glow {
+  0%,100% {box-shadow:0 8px 30px rgba(0,0,0,0.5),0 0 8px rgba(0,255,255,0.15) inset;}
+  50% {box-shadow:0 18px 40px rgba(0,0,0,0.6),0 0 20px rgba(0,255,255,0.25) inset;}
+}
+
+/* ===== Star Rating System (new isolated section) ===== */
+.rating-container {
+  position:fixed;
+  left:25px;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(20,20,30,0.85);
+  border:1px solid rgba(57,255,20,0.3);
+  border-radius:15px;
+  padding:10px 14px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  box-shadow:0 0 25px rgba(0,255,255,0.15);
+  z-index:9000;
+}
+.rating-container h4 {
+  margin:0;
+  font-size:13px;
+  color:#0ff;
+  text-shadow:0 0 8px #0ff;
+}
+.stars {
+  display:flex;
+  gap:4px;
+  cursor:pointer;
+}
+.star {
+  font-size:20px;
+  color:#555;
+  transition:0.3s;
+}
+.star.active {
+  color:#ff0;
+  text-shadow:0 0 10px #ff0;
+}
+.star:hover {transform:scale(1.2);}
+.rating-result {
+  font-size:13px;
+  color:#39ff14;
+}
 </style>
 </head>
 <body>
 
 <div class="header">
+  <div class="site-name">IR Gamers.bm</div>
+  <div>
     <i class="fa-brands fa-steam icon"></i>
     <i class="fa-solid fa-gamepad icon"></i>
     <i class="fa-solid fa-bolt icon"></i>
+  </div>
 </div>
 
 <div class="carousel-container">
-    <div class="nav-btn prev">&#10094;</div>
-    <div class="carousel" id="carousel">
-        <!-- بخش 1: پروفایل استیم -->
-        <div class="carousel-item" style="transform: rotateY(0deg) translateZ(300px);">
-            <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/your_avatar.jpg" alt="M_LMC">
-            <div class="info-row"><i class="fa-solid fa-user"></i><span>M_LMC</span></div>
-            <a href="https://steamcommunity.com/id/M_LMC/" target="_blank" class="btn">Add Friend</a>
-            <div class="info-row"><i class="fa-solid fa-calendar"></i><span>سن: 20</span></div>
-            <div class="info-row"><i class="fa-solid fa-clock"></i><span>تایم پلیcs: 800h</span></div>
-            <div class="info-row"><i class="fa-solid fa-trophy"></i><span>رنک: 12000</span></div>
-            <div class="info-row"><i class="fa-solid fa-gamepad"></i><span>تعداد بازی: 12</span></div>
-            <div class="info-row"><i class="fa-solid fa-star"></i><span>Level: 22</span></div>
-            <div class="info-row"><i class="fa-solid fa-city"></i><span>شهر: خمین مرکزی</span></div>
-            <div class="info-row"><i class="fa-solid fa-pen"></i><span>توضیحات: داریوشم ولی بی اقبال</span></div>
-            <div class="info-row"><i class="fa-brands fa-instagram"></i><span>اینستاگرام: ?</span></div>
-            <div class="info-row"><i class="fa-brands fa-telegram"></i><span>تلگرام: @BM1PRO</span></div>
-            <div class="info-row"><i class="fa-brands fa-discord"></i><span>دیسکورد: @mahdiyar_lmc</span></div>
-        </div>
-        <!-- بخش 2: + ارسال اطلاعات -->
-        <div class="carousel-item" style="transform: rotateY(180deg) translateZ(300px);">
-            <div class="plus-section">
-                <div class="plus-btn">+</div>
-                <div class="plus-text">
-                    اطلاعات خودتون رو برای ساخت پروفایل ارسال کنید.<br>
-                    ایمیل: <b>bm.pro.ir@gmail.com</b><br>
-                    حداکثر تا 2 روز ساخته می‌شود.
-                </div>
-            </div>
-        </div>
+  <div class="nav-btn prev"><i class="fa-solid fa-angle-left"></i></div>
+  <div class="carousel" id="carousel">
+    <div class="carousel-item" style="transform: rotateY(0deg) translateZ(300px);">
+      <img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/your_avatar.jpg" alt="M_LMC">
+      <div class="info-row"><i class="fa-solid fa-user"></i><span>M_LMC</span></div>
+      <a href="https://steamcommunity.com/id/M_LMC/" target="_blank" class="btn">Add Friend</a>
+      <div class="info-row"><i class="fa-solid fa-calendar"></i><span>17سن!: 20تا</span></div>
+      <div class="info-row"><i class="fa-solid fa-clock"></i><span>تایم پلی CS: 800h</span></div>
+      <div class="info-row"><i class="fa-solid fa-trophy"></i><span>رنک: 12000</span></div>
+      <div class="info-row"><i class="fa-solid fa-gamepad"></i><span>تعداد بازی: 12</span></div>
+      <div class="info-row"><i class="fa-solid fa-star"></i><span>Level: 22</span></div>
+      <div class="info-row"><i class="fa-solid fa-city"></i><span>شهر: خمین مرکزی</span></div>
+      <div class="info-row"><i class="fa-solid fa-pen"></i><span>توضیحات: داریوشم ولی بی‌اقبال</span></div>
+      <div class="info-row"><i class="fa-brands fa-telegram"></i><span>(@BM1PRO)?</span></div>
+      <div class="info-row"><i class="fa-brands fa-discord"></i><span>@mahdiyar_lmc</span></div>
     </div>
-    <div class="nav-btn next">&#10095;</div>
-</div>
-
-<script>
-const carousel = document.getElementById('carousel');
-const items = carousel.children;
-let index = 0;
-
-function updateCarousel() {
-    const angle = (360 / items.length) * index;
-    carousel.style.transform = `translateZ(-300px) rotateY(-${angle}deg)`;
-}
-
-document.querySelector('.prev').addEventListener('click', () => {
-    index = (index - 1 + items.length) % items.length;
-    updateCarousel();
-});
-document.querySelector('.next').addEventListener('click', () => {
-    index = (index + 1) % items.length;
-    updateCarousel();
-});
-
-updateCarousel();
-</script>
-       
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- ====== Iran Gamers Sticky Footer Banner (Standalone) ====== -->
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
-
-<style>
-  /* Scoped styles for the banner - safe to paste anywhere */
-  #ig-footer-banner {
-    direction: rtl;
-    font-family: "Vazirmatn", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    position: fixed;
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    pointer-events: auto;
-  }
-
-  #ig-footer-banner .ig-card {
-    width: min(980px, calc(100% - 24px));
-    background: linear-gradient(135deg, rgba(18,18,30,0.96), rgba(30,18,45,0.96));
-    border-radius: 14px;
-    padding: 14px 18px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.5), 0 0 18px rgba(130, 60, 200, 0.14) inset;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    border: 1px solid rgba(255,255,255,0.06);
-    backdrop-filter: blur(6px);
-    animation: ig-glow 3s ease-in-out infinite;
-  }
-
-  /* small left accent */
-  #ig-footer-banner .accent {
-    flex: 0 0 52px;
-    height: 52px;
-    border-radius: 10px;
-    background: linear-gradient(180deg, #ff6b6b, #ffb86b);
-    display: grid;
-    place-items: center;
-    font-weight: 900;
-    color: white;
-    box-shadow: 0 6px 20px rgba(255,107,107,0.18);
-  }
-
-  /* text area */
-  #ig-footer-banner .content {
-    flex: 1 1 auto;
-    color: #fff;
-    line-height: 1.4;
-    font-size: 15px;
-  }
-
-  #ig-footer-banner .content .headline {
-    font-weight: 900;
-    font-size: 16px;
-    margin-bottom: 4px;
-    letter-spacing: 0.3px;
-  }
-
-  #ig-footer-banner .content .desc {
-    opacity: 0.95;
-    font-weight: 400;
-  }
-
-  /* email chip */
-  #ig-footer-banner .email {
-    margin-left: 14px;
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  #ig-footer-banner .email a {
-    display: inline-block;
-    background: linear-gradient(90deg, rgba(255,255,255,0.96), rgba(240,240,240,0.9));
-    color: #0b0b0b;
-    padding: 10px 14px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: 700;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-    white-space: nowrap;
-  }
-
-  /* small close button */
-  #ig-footer-banner .close-btn {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    background: rgba(255,255,255,0.06);
-    color: #fff;
-    border: 1px solid rgba(255,255,255,0.06);
-    width: 30px;
-    height: 30px;
-    border-radius: 999px;
-    display: grid;
-    place-items: center;
-    cursor: pointer;
-    backdrop-filter: blur(4px);
-    transition: transform .15s ease, background .15s;
-  }
-  #ig-footer-banner .close-btn:hover { transform: scale(1.08); background: rgba(255,255,255,0.10); }
-
-  /* subtle pulsing glow */
-  @keyframes ig-glow {
-    0% { box-shadow: 0 8px 30px rgba(0,0,0,0.5), 0 0 6px rgba(130,60,200,0.08) inset; transform: translateY(0); }
-    50% { box-shadow: 0 18px 40px rgba(0,0,0,0.6), 0 0 18px rgba(130,60,200,0.16) inset; transform: translateY(-2px); }
-    100% { box-shadow: 0 8px 30px rgba(0,0,0,0.5), 0 0 6px rgba(130,60,200,0.08) inset; transform: translateY(0); }
-  }
-
-  /* responsive tweaks */
-  @media (max-width: 520px) {
-    #ig-footer-banner .accent { display: none; }
-    #ig-footer-banner .email a { padding: 8px 10px; font-size: 13px; }
-    #ig-footer-banner .content { font-size: 14px; }
-    #ig-footer-banner .ig-card { padding: 12px; border-radius: 10px; }
-  }
-</style>
-
-<div id="ig-footer-banner" aria-label="Iran Gamers - تماس">
-  <div class="ig-card" role="region" aria-labelledby="ig-headline">
-    <div class="accent">BM</div>
-
-    <div class="content">
-      <div id="ig-headline" class="headline">برای ساخت سایت با تم و بخش‌های دلخواه — کاملاً رایگان</div>
-      <div class="desc">
-        برای ساخت این نوع سایت ها با اطلاعات و تم و قسمت و... دلخواه به این ایمیل پیام بدهید:
-        ( ارسال اطلاعات و چیز هایی که میخواید برای سایتتون (کاملا رایگان).
+    <div class="carousel-item" style="transform: rotateY(180deg) translateZ(300px);">
+      <div class="plus-section">
+        <div class="plus-btn">+</div>
+        <div class="plus-text">
+          اطلاعات خودتون رو برای ساخت پروفایل ارسال کنید.<br>
+          ایمیل: <b>bm.pro.ir@gmail.com</b><br>
+          حداکثر تا 2 روز ساخته می‌شود.
+        </div>
       </div>
     </div>
+  </div>
+  <div class="nav-btn next"><i class="fa-solid fa-angle-right"></i></div>
+</div>
 
+<div id="ig-footer-banner">
+  <div class="ig-card">
+    <div class="accent">BM</div>
+    <div class="content">
+      <div class="headline">برای ساخت سایت با تم و بخش‌های دلخواه — کاملاً رایگان</div>
+      <div class="desc">برای ساخت این نوع سایت ها با اطلاعات و تم و قسمت و... دلخواه به این ایمیل پیام بدهید:
+      ( ارسال اطلاعات و چیز هایی که میخواید برای سایتتون (کاملا رایگان).</div>
+    </div>
     <div class="email">
-      <a href="mailto:iran.gamers.irangame@gmail.com" title="ارسال ایمیل به iran.gamers.irangame@gmail.com">
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=iran.gamers.irangame@gmail.com" target="_blank">
         iran.gamers.irangame@gmail.com
       </a>
     </div>
-
-    <button class="close-btn" aria-label="بستن اعلان" onclick="document.getElementById('ig-footer-banner').style.display='none'">✕</button>
+    <button class="close-btn" onclick="document.getElementById('ig-footer-banner').style.display='none'">✕</button>
   </div>
 </div>
-<!-- ====== End Banner ====== -->
+
+<!-- ⭐ New Rating Section -->
+<div class="rating-container" id="ratingBox">
+  <h4>امتیاز بده</h4>
+  <div class="stars" id="starsBox">
+    <i class="fa-solid fa-star star" data-star="1"></i>
+    <i class="fa-solid fa-star star" data-star="2"></i>
+    <i class="fa-solid fa-star star" data-star="3"></i>
+    <i class="fa-solid fa-star star" data-star="4"></i>
+    <i class="fa-solid fa-star star" data-star="5"></i>
+  </div>
+  <div class="rating-result" id="ratingResult">★ امتیاز شما: 0</div>
+</div>
+
+<script>
+const carousel=document.getElementById('carousel');
+const items=carousel.children;
+let index=0;
+function updateCarousel(){
+  const angle=(360/items.length)*index;
+  carousel.style.transform=`translateZ(-300px) rotateY(-${angle}deg)`;
+}
+document.querySelector('.prev').addEventListener('click',()=>{index=(index-1+items.length)%items.length;updateCarousel();});
+document.querySelector('.next').addEventListener('click',()=>{index=(index+1)%items.length;updateCarousel();});
+updateCarousel();
+
+/* ⭐ Rating System Script (isolated) */
+const stars=document.querySelectorAll('#starsBox .star');
+const result=document.getElementById('ratingResult');
+let userRating=localStorage.getItem('userRating')||0;
+setRating(userRating);
+
+stars.forEach(s=>{
+  s.addEventListener('click',()=>{
+    userRating=s.dataset.star;
+    localStorage.setItem('userRating',userRating);
+    setRating(userRating);
+  });
+});
+
+function setRating(r){
+  stars.forEach(star=>{
+    star.classList.toggle('active',star.dataset.star<=r);
+  });
+  result.textContent=`★ امتیاز شما: ${r}`;
+}
+</script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 🎮 Player Level Widget (در سمت راست سایت) -->
+<div class="player-level">
+  <h3>🎮 Player Level: <span id="playerLevel">12</span></h3>
+  <div class="level-bar">
+    <div class="level-fill"></div>
+  </div>
+</div>
+
+<style>
+/* 📊 Player Level Widget Style */
+.player-level {
+  position: fixed;
+  right: 20px;
+  bottom: 120px;
+  width: 200px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid #00ffff;
+  border-radius: 15px;
+  padding: 10px 15px;
+  box-shadow: 0 0 15px #00ffff;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  color: #00ffff;
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.player-level:hover {
+  box-shadow: 0 0 25px #39ff14, 0 0 35px #00ffff;
+  transform: scale(1.05);
+}
+
+.level-bar {
+  width: 100%;
+  height: 10px;
+  background: #222;
+  border-radius: 10px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.level-fill {
+  height: 100%;
+  width: 60%; /* درصد پیشرفت */
+  background: linear-gradient(90deg, #00ffff, #39ff14);
+  box-shadow: 0 0 15px #00ffff;
+  animation: progressGlow 2s infinite alternate;
+}
+
+@keyframes progressGlow {
+  from { box-shadow: 0 0 10px #00ffff; }
+  to { box-shadow: 0 0 20px #39ff14; }
+}
+
+/* نسخه موبایل */
+@media (max-width: 768px) {
+  .player-level {
+    position: static;
+    margin: 15px auto;
+    width: 85%;
+  }
+}
+</style>
+
+
+
 
 
 
